@@ -1,0 +1,379 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'inter';
+  }
+  
+  :root{
+    --bg-color: #21201E;
+    --main-color: rgba(254, 97, 9, 1);
+    --2nd-main-color: #FFFCFC;
+    --text-color: #FFFCFC;
+    --big-font: 7rem;
+    --h2-font: 1.9rem;
+    --p-font: 1.1rem;
+  }
+  
+  body{
+    margin-right: auto;
+    height: 100vh;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    background-size: cover;
+  }
+  
+  li{
+    list-style: none;
+  }
+  
+  a{
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 1rem;
+  }
+  
+  a:hover {
+    color: var(--main-color);
+  }
+  
+  /* header */
+  
+  header {
+    top: 0px;
+    width: 100%;
+    background-color: #21201E;
+    z-index: 1000;
+}
+
+.navbar {
+    height: 149px;
+    max-width: 1440px;
+    margin-left: 0rem;
+    background-color: #21201E;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo {
+  width: 210px;
+  height: 105px;
+  margin-left:5rem;
+  align-items: center;
+  margin-top: ;
+}
+span {
+    font-weight: blod;
+  }
+  .navbar .links {
+    margin-right: 4rem;
+    font-size: 3rem;
+    font-weight: 600;
+    display: flex;
+    margin-bottom: 20px;
+    gap: 3.5rem;
+  }
+  .Home {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px;
+    margin-top: -50px;
+  }
+  
+  .home-text {
+    margin-top: -50;
+    font-size: 1.2rem;
+    width: 50%;
+    margin-left: 3rem;
+  }
+  .home-text h1 ,h3{
+    color: #D9D9D9;
+  }
+  .home-text p{
+    color: #979591;
+  }
+  .main-button {
+    margin-top: 20px;
+  }
+  
+  .butto {
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 5px;
+    padding: 6px 15px;
+    text-decoration: none;
+    color: white;
+    background-color: var(--main-color); 
+    border-radius: 15px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .butto:hover {
+    scale: 1.05;
+    color: var(--bg-color);
+  }
+
+  .butto:active {
+    scale: 1.09;
+  }
+
+  .home-img {
+    position: relative;
+    width: 35%;
+    margin-right: 3rem;
+  }
+  
+  .home-img img {
+    width: 100%;
+    border-radius: 50%;
+    border: 5px solid var(--main-color);
+  }
+  .home-img img:hover{
+    transform: translateX(10px);
+  }
+  
+  .home-social-links {
+    align-items: center;
+    margin-top: -4rem;
+    margin-left: 5.1rem;
+    margin-bottom: 1rem;
+    font-size: larger;
+  }
+  
+  .home-social-links a {
+    color: #FFFCFC;
+    text-decoration: none;
+    padding: 20px 15px;
+    font-size: 30px;
+  }
+  
+  .home-social-links a:hover{
+    color: var(--main-color);
+  }
+  /* about css*/
+  .About {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px;
+    margin-top: -3rem;
+  }
+  
+  .about-text {
+    width: 50%;
+    margin-left: 3rem;
+  }
+  
+  .about-img {
+    position: relative;
+    width: 35%;
+    height: 80%;
+    margin-left: 3rem;
+  }
+  
+  .about-img img {
+    width: 95%;
+    border-radius: 0%;
+  }
+  .about-img img:hover{
+    transform: translateY(-5px);
+  }
+  
+  .about-text h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+  }
+  
+  .about-text h3 {
+    font-size: 1.2em;
+    margin:15px 0 20px 0;
+  }
+  .about-text h4 {
+    font-size: 1em;
+    margin:15px 0 15px 0;
+  }
+  .about-text h5 {
+    font-size: 1em;
+    font-weight: var(--p-font);
+    margin:15px 0 15px 0;
+  }
+
+  .about-text h5 span:hover{
+    cursor: pointer;
+    color: rgb(225, 176, 101);
+  }
+  
+  .about-text p {
+    font-size: 1em;
+    color: var(--2nd-main-color);
+    line-height: 1.5;
+  }
+
+  .about-social-links {
+    align-items: center;
+    margin-top: 1.5rem;
+  }
+
+  .about-social-links a {
+    color: #fff;
+    text-decoration: none;
+    padding: 20px 15px;
+    font-size: 35px;
+    margin-left: -1rem;
+  }
+
+  .about-social-links a:hover{
+    color: var(--main-color);
+  }
+
+  /* about my skills */
+
+.skills{
+    margin: 2rem 0 0 5rem;
+    margin-left: 6rem;
+  }
+  
+.skill-box-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 2rem 3rem 4rem 0;
+}
+
+.skill-box {
+    width: 100px;
+    height: 30px;
+    padding: 5px;
+    text-align: center;
+    background-color: var(--bg-color);
+    box-shadow: 0 0 2px #D9D9D9;
+}
+
+.skill-box:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 0px 2px #D9D9D9
+}
+/*sign-in/up*/
+.sign-in{
+  margin-left: 7rem;
+  font-weight: bold;
+}
+.sign-in label{
+  font-size: 1.5rem;
+  margin-left: 2rem;
+}
+.sign-in h2{
+  margin-top: 2rem;
+  margin-left: 2rem;
+  margin-bottom: 2rem;
+  color: #fe6109;
+}
+.sign-in input{
+  font-size: 1.5rem;
+  padding: 8px  px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #fff; 
+  border-radius: 3px; 
+  background-color: rgb(44, 43, 43);
+  color: #fff; 
+  margin-left: rem;
+  align-items: center;
+  align-content: center;
+  justify-content: space-around ;
+}
+.sign-in button{
+  padding: 8px 80px;
+  background-color: var(--main-color);
+  color: white;
+  font-weight: ;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-left: 23rem;
+  font-size: 1.5rem;
+}
+.sign-in h3{
+  margin-top: 3rem;
+  margin-left: 2rem;
+  font-size: 1.5rem;
+}
+.sign-in h4{
+  color: #D9D9D9;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  margin-left: 2rem;
+  font-size: 1.5rem;
+}
+ .sign-in h4 a{
+text-underline-position: below;
+font-size: 1.5rem;
+}
+  footer {
+    display: flex;
+    padding: 20px;
+    margin-left: 1.5rem;
+    margin-right: 2.5rem;
+    justify-content: space-between;
+    align-items: left;
+    color: white;
+    margin-top: auto;
+    line-height: 1.8rem;
+    backdrop-filter: blur(2000px);
+  }
+  
+  .social-links {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 25px;
+  }
+  .social-links p{
+  margin-left: 25px;
+  color: #D9D9D9;
+}
+  .social-links a:hover{
+    color: var(--main-color);
+  }
+  
+  .address p,
+.copyright p,
+.subscribe p {
+    margin-left: 0px;
+    color: #D9D9D9;
+    
+}
+
+.subscribe input {
+  width: 80%;
+  padding: 6px 6px;
+  margin-bottom: 15px;
+  border: 1px solid #fff; 
+  border-radius: 3px; 
+  background-color: rgb(44, 43, 43);
+  color: #fff; 
+}
+
+.subscribe button {
+    padding: 6px;
+    background-color: var(--main-color);
+    color: white;
+    font-weight: 400;
+    border-radius: 3px;
+    border: 1px solid #fff;
+    cursor: pointer;
+    margin-left: -1.5rem;
+}
+
+.subscribe button:hover {
+  scale: 1.05;
+  color: var(--bg-color);
+}
+
+/* media query for responsiveness */
+@media only screen and (max-width: 700px) {
+  
+  
