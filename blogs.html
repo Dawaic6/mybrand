@@ -11,7 +11,6 @@
 </head>
 
 <body>
-<header><body>
     <header>
       <div class="navbar">
         <div class="logo"><img src="./logo.jpg" alt="">
@@ -24,10 +23,24 @@
           <li><a href="./#">blogs</a></li>
           <li><a href="./signin.html">sign in</a></li>
         </ul>
+        <div class="toggle_btn">
+            <i class="fa-solid fa-bars"></i>
+          </div>
+        </div>
+        <div class="dropdown_menu">
+            <li><a href="./home.html">Home</a></li>
+            <li><a href="./About.html">About</a></li>
+            <li><a href="./contactform.html">Contact</a></li>
+            <li><a href="./portfolio.html">portfolio</a></li>
+            <li><a href="./#">blogs</a></li>
+            <li><a href="./signin.html">sign in</a></li>
+      
+          </div>
     </header>
-  </header>
   <main>
-    <h1>Research <span>And</span>Publications</h1>
+    <div class="h1">
+    <h1>Research <span>And</span> Publications</h1>
+    </div>
     <section class="blogs">
       
         <div class="blogs-img">
@@ -101,5 +114,19 @@
           </div>
           
         </footer>
+        <script>
+            const toggleBtn = document.querySelector('.toggle_btn')
+            const toggleBtnIcon = document.querySelector('.toggle_btn i')
+            const dropDownMenu = document.querySelector('.dropdown_menu')
+        
+            toggleBtn.onclick = function () {
+              dropDownMenu.classList.toggle('open')
+              const isOpen = dropDownMenu.classList.contains('open')
+        
+              toggleBtnIcon.classList = isOpen
+                ? 'fa-solid fa-xmark'
+                : 'fa-solid fa-bars'
+            } 
+          </script>
 </body>
 </html>

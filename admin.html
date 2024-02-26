@@ -5,20 +5,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet">
     <title>Document</title>
-    <link rel="stylesheet" href="./contact.css">
+    <link rel="stylesheet" href="./home.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
-
     <header>
       <div class="navbar">
         <div class="logo"><img src="./logo.jpg" alt="">
@@ -26,56 +18,49 @@
         <ul class="links">
           <li><a href="./home.html">Home</a></li>
           <li><a href="./About.html">About</a></li>
-          <li><a href="../#.html">Contact</a></li>
+          <li><a href="./contactform.html">Contact</a></li>
           <li><a href="./portfolio.html">portfolio</a></li>
           <li><a href="./blogs.html">blogs</a></li>
-          <li><a href="./signin.html">sign in</a></li>
+          <li><a href="./#" class="Sign_in" >sign in</a></li>
         </ul>
         <div class="toggle_btn">
           <i class="fa fa-bars"></i>
         </div>
         <div class="dropdown_menu">
           <li><a href="./home.html">Home</a></li>
-          <li><a href="./#">About</a></li>
+          <li><a href="./About.html">About</a></li>
           <li><a href="./contactform.html">Contact</a></li>
           <li><a href="./portfolio.html">portfolio</a></li>
           <li><a href="./blogs.html">blogs</a></li>
-          <li><a href="./signin.html">sign in</a></li>
-    
+          <li><a href="./#">sign in</a></li>
+      
         </div>
   </header>
-  <main>
-
-    <section class="Contact">
-        <div class="contact-text">
-            <h1>Contact  Me</h1>
-            <p>Microsoft Azure, formerly known as Windows Azure, is Microsoft's public cloud computing platform. It provides a ran .</p>
-            <h4>
-              <a href="#"><i class="fa fa-envelope"></i></a>
-                 iradukundasangwacedric@gmail.com <br>
-              <a href="tel:+250782446577"><i class="fa fa-phone"></i></a>
-              (+250) 782446577 
-            </h4>
-            <div class="contact-social-links">
-              <a href="https://github.com/Dawaic6" ><i class="fa fa-github"></i></a>
-              <a href=""><i class="fa fa-linkedin"></i></a>
-              <a href=""><i class="fa fa-facebook"></i></a>
-              <a href=""><i class="fa fa-twitter"></i></a>
-              <a href=""><i class="fa fa-instagram"></i></a>
-            </div>
-        </div>
-        <div class="contact-form">
-            <form>
-                <input type="text" name="fname" placeholder="enter your names.." required>
-                <input type="text" name="email" placeholder="enter your email.." required>
-                <textarea name="message" id="" cols="45" rows="5" placeholder="enter your meassage.." required></textarea>
-                <button>Send Message</button>
-            </form>
-        </div>
-    </section>
-    <hr>
-  </main>
-   <footer>
+ <div class="color" style="background-color: white; border-radius: 10px;">
+  <h1>User Admin</h1>
+  <form id="user-form">
+      <label for="name">Username:</label>
+      <input type="text" id="Username" name="Username" required>
+    
+      <label for="password">Password:</label>
+      <input type="text" id="password" name="password" required>
+      <button type="submit">Add User</button>
+  </form>
+  <table id="user-table">
+      <thead>
+          <tr>
+              <th>Name</th>
+              <th>Password</th>
+              <th>Action</th>
+          </tr>
+      </thead>
+      <tbody>
+      </tbody>
+  </table>
+  <hr style="color: white; border-radius: 3px; margin-top: 4rem;">
+</div>
+</body>
+  <footer>
           <div class="social-links">
             <p> @2024 All right reserved. Developed By Cedro Group</p><br>
             <p>Chat with Us</p>
@@ -97,6 +82,28 @@
           
         </footer>
         <script>
+
+document.getElementById('user-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const Username = document.getElementById('Username').value;
+    const password = document.getElementById('password').value;
+    const table = document.getElementById('user-table');
+    const row = table.insertRow(-1);
+    const cell1 = row.insertCell(0);
+    const cell2 = row.insertCell(1);
+    const cell3 = row.insertCell(2);
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = 'Delete';
+    deleteButton.addEventListener('click', function() {
+        table.deleteRow(row.rowIndex);
+    });
+    cell1.textContent = Username;
+    cell2.textContent = password;
+    cell3.appendChild(deleteButton);
+    document.getElementById('Username').value = '';
+    document.getElementById('password').value = '';
+});
+
           const toggleBtn = document.querySelector('.toggle_btn')
           const toggleBtnIcon = document.querySelector('.toggle_btn i')
           const dropDownMenu = document.querySelector('.dropdown_menu')

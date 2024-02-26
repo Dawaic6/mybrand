@@ -55,12 +55,44 @@
     align-items: center;
     justify-content: space-between;
 }
-.logo {
-  width: 210px;
-  height: 105px;
-  margin-left:5rem;
+.navbar .toggle_btn{
+  color: var(--text-color);
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: none;
+}
+.dropdown_menu{
+  display: none;
+  position: absolute;
+  right: 2rem;
+  top: 60px;
+  width: 300px;
+  height: 0;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border-radius: 15px;
+  overflow: hidden;
+  transition: height 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.dropdown_menu.open{
+  height: 250px;
+  width: 300px;
+}
+
+.dropdown_menu li{
+  padding: 0.7rem;
+  display: flex;
   align-items: center;
-  margin-top: ;
+  justify-content: center;
+}
+.logo {
+margin-left: 3rem;
+}
+/* SHOW MENU */
+
+.show-menu{
+  top: 0rem !important;
 }
 span {
     font-weight: blod;
@@ -78,17 +110,19 @@ span {
     align-items: center;
     justify-content: space-between;
     padding: 50px;
-    margin-top: -50px;
+    margin-top: -2rem;
   }
-  
   .home-text {
     margin-top: -50;
     font-size: 1.2rem;
-    width: 50%;
+    width: 40%;
     margin-left: 3rem;
   }
-  .home-text h1 ,h3{
+  .home-text h1{
     color: #D9D9D9;
+  }
+  .home-text h3{
+    color: #fe6109;
   }
   .home-text p{
     color: #979591;
@@ -121,7 +155,6 @@ span {
   .butto:active {
     scale: 1.09;
   }
-
   .home-img {
     position: relative;
     width: 35%;
@@ -139,8 +172,8 @@ span {
   
   .home-social-links {
     align-items: center;
-    margin-top: -4rem;
-    margin-left: 5.1rem;
+    margin-top: 1rem;
+    margin-left: 5rem;
     margin-bottom: 1rem;
     font-size: larger;
   }
@@ -161,25 +194,18 @@ span {
     align-items: center;
     justify-content: space-between;
     padding: 50px;
-    margin-top: -3rem;
+    margin-top: -2rem;
   }
-  
+  .about-img img {
+    width: 70%;
+    border-radius: 0%;
+    margin-left: 3rem;
+  }
   .about-text {
     width: 50%;
     margin-left: 3rem;
   }
   
-  .about-img {
-    position: relative;
-    width: 35%;
-    height: 80%;
-    margin-left: 3rem;
-  }
-  
-  .about-img img {
-    width: 95%;
-    border-radius: 0%;
-  }
   .about-img img:hover{
     transform: translateY(-5px);
   }
@@ -234,8 +260,9 @@ span {
   /* about my skills */
 
 .skills{
+
     margin: 2rem 0 0 5rem;
-    margin-left: 6rem;
+    margin-left: 3rem;
   }
   
 .skill-box-container {
@@ -259,72 +286,237 @@ span {
     box-shadow: 0 0px 2px #D9D9D9
 }
 /*sign-in/up*/
-.sign-in{
-  margin-left: 7rem;
-  font-weight: bold;
+body {
+font-family: Arial, Helvetica, sans-serif;
 }
-.sign-in label{
-  font-size: 1.5rem;
-  margin-left: 2rem;
+
+* {
+  box-sizing: border-box;
 }
-.sign-in h2{
-  margin-top: 2rem;
-  margin-left: 2rem;
-  margin-bottom: 2rem;
+
+/* style the container */
+.container {
+  position: relative;
+  border-radius: 5px;
+  background-color: #979591;
+  padding: 20px 0 30px 0;
+} 
+
+/* style inputs and link buttons */
+input,
+.btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  margin: 5px 0;
+  opacity: 0.85;
+  display: inline-block;
+  font-size: 17px;
+  line-height: 20px;
+  text-decoration: none; /* remove underline from anchors */
+}
+input:hover,
+.btn:hover {
+  opacity: 3;
+}
+.btn:hover{
   color: #fe6109;
 }
-.sign-in input{
-  font-size: 1.5rem;
-  padding: 8px  px;
-  margin-top: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #fff; 
-  border-radius: 3px; 
-  background-color: rgb(44, 43, 43);
-  color: #fff; 
-  margin-left: rem;
-  align-items: center;
-  align-content: center;
-  justify-content: space-around ;
-}
-.sign-in button{
-  padding: 8px 80px;
-  background-color: var(--main-color);
+
+/* add appropriate colors to fb, twitter and google buttons */
+.fb {
+  background-color: #5383a8;
+  background-color:;
   color: white;
-  font-weight: ;
-  border-radius: 3px;
+}
+
+.twitter {
+  background-color: #5383a8;
+  color: white;
+}
+
+.google {
+  background-color: #5383a8;
+  background-color:;
+  color: white;
+}
+
+/* style the submit button */
+input[type=submit] {
+  background-color: #04AA6D;
+  color: rgb(11, 11, 11);
   cursor: pointer;
-  margin-left: 23rem;
-  font-size: 1.5rem;
 }
-.sign-in h3{
-  margin-top: 3rem;
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+/* Two-column layout */
+.col {
+  float: left;
+  width: 50%;
+  margin: auto;
+  padding: 0 50px;
+  margin-top: 6px;
+  cursor: pointer;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* vertical line */
+.vl {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  border: 2px solid #3e3835;
+  height: 175px;
+}
+
+/* text inside the vertical line */
+.vl-innertext {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #979591;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  padding: 8px 10px;
+}
+
+/* hide some text on medium and large screens */
+.hide-md-lg {
+  display: none;
+}
+
+/* bottom container */
+.bottom-container {
+  text-align: center;
+  background-color: #666;
+  border-radius: 0px 0px 4px 4px;
+}
+/* sign up or register*/
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color:black ;
   margin-left: 2rem;
-  font-size: 1.5rem;
+  margin-right: 2rem;
 }
-.sign-in h4{
-  color: #D9D9D9;
-  margin-top: 1rem;
-  margin-bottom: 2rem;
-  margin-left: 2rem;
-  font-size: 1.5rem;
+
+* {
+  box-sizing: border-box;
 }
- .sign-in h4 a{
-text-underline-position: below;
-font-size: 1.5rem;
+
+/* Add padding to containers */
+.container {
+  padding: 8px;
+  background-color: #979591;
 }
-  footer {
-    display: flex;
-    padding: 20px;
-    margin-left: 1.5rem;
-    margin-right: 2.5rem;
-    justify-content: space-between;
-    align-items: left;
-    color: white;
-    margin-top: auto;
-    line-height: 1.8rem;
-    backdrop-filter: blur(2000px);
-  }
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Overwrite default styles of hr */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Set a style for the submit button */
+.registerbtn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.registerbtn:hover {
+  opacity: 1;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+  background-color: black;
+  text-align: center;
+  color: white;
+}
+/*admin*/
+
+h1{
+  color: #21201E;
+}
+
+form {
+  margin-bottom: 20px;
+  color: #21201E;
+}
+
+input {
+  margin-right: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+footer {
+  display: flex;
+  gap: 30px;
+  padding: 20px;
+  margin-left: 1.5rem;
+  margin-right: 2.5rem;
+  justify-content: space-between;
+  align-items: left;
+  color: white;
+  margin-top: auto;
+  line-height: 1.8rem;
+  backdrop-filter: blur(2000px);
+}
   
   .social-links {
     color: #fff;
@@ -348,9 +540,9 @@ font-size: 1.5rem;
 }
 
 .subscribe input {
-  width: 80%;
+  width: 100%;
   padding: 6px 6px;
-  margin-bottom: 15px;
+  margin-bottom: 0px;
   border: 1px solid #fff; 
   border-radius: 3px; 
   background-color: rgb(44, 43, 43);
@@ -365,15 +557,191 @@ font-size: 1.5rem;
     border-radius: 3px;
     border: 1px solid #fff;
     cursor: pointer;
-    margin-left: -1.5rem;
+    margin-left: 0rem;
 }
 
 .subscribe button:hover {
   scale: 1.05;
   color: var(--bg-color);
 }
+.close{
+  display: none;
+}
+.menu{
+  display: none;
+}
 
 /* media query for responsiveness */
 @media only screen and (max-width: 700px) {
+  /* Navbar styles */
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    margin-left: 1rem;
+    margin-right: 2rem;
+  }
+
+  .navbar .toggle_btn{
+    display: block;
+  }
+
+  .dropdown_menu{
+    display: block;
+  }
+
+  .navbar .logo a {
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
+
+  .navbar .links {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    background-color: rgb(44, 43, 43);
+    position: absolute;
+    top: 70px;
+    left: 0;
+  }
+
+  .navbar .links.show {
+    display: flex;
+  }
+
+  .navbar .links a {
+    margin: 10px 0;
+  }
+
+  .navbar #white-mode {
+    margin: 10px 0;
+  }
+
+  /* Home section styles */
+  .Home {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .home-text {
+    width: 100%;
+    margin-left: 0;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .home-img {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .main-button {
+    margin-top: 30px;
+    font-size: 0.5rem;
+  }
+
+  .center{
+    margin: 2rem 10px 0 20px;
+  }
+
+  .service-content {
+    margin: 1rem 10px 10px 10px;
+  }
+
+  .home-social-links {
+    margin-left: 10%;
+    margin-right: 10%;
+    padding:5px 5px;
+    gap: 2px;
+  }
+  .home-social-links a{
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 700px) {
+  .dropdown_menu{
+    left: 5rem;
+    width: unset;
+  }
+}
+
+/* about me query */
+
+@media only screen and (max-width: 700px) {
+  .About {
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    margin-top: 1rem;
+  }
+
+  .about-text {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 20px;
+  }
+
+  .about-img {
+    width: 100%;
+    margin-left: -2rem;
+    border-radius: 8px;
+    border: 0px solid var(--main-color);
+  }
   
-  
+  .about-img img {
+    border-radius: 8px;
+    border: none;
+    margin-bottom: 0;
+  }
+}
+
+/* contact me page responsiveness query */
+
+@media only screen and (max-width: 700px) {
+  .Contact {
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+  }
+
+  .contact-text {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 20px;
+  }
+
+  .contact-form {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .contact-form button {
+    margin-left: 0;
+  }
+}
+/*sign in page*/
+@media screen and (max-width: 700px) {
+  .col {
+    width: 100%;
+    margin-top: 0;
+  }
+  /* hide the vertical line */
+  .vl {
+    display: none;
+  }
+  /* show the hidden text on small screens */
+  .hide-md-lg {
+    display: block;
+    text-align: center;
+  }
+}
+@media screen and (max-width: 700px) {
+footer {
+  margin-left: -2rem;
+  gap: 30px;
+}
+}

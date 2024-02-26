@@ -11,37 +11,75 @@
 </head>
 
 <body>
-
-<header><body>
     <header>
       <div class="navbar">
         <div class="logo"><img src="./logo.jpg" alt="">
         </div>
         <ul class="links">
-          <li><a href=".home.html">Home</a></li>
+          <li><a href="./home.html">Home</a></li>
           <li><a href="./About.html">About</a></li>
           <li><a href="./contactform.html">Contact</a></li>
           <li><a href="./portfolio.html">portfolio</a></li>
           <li><a href="./blogs.html">blogs</a></li>
           <li><a href="./#">sign in</a></li>
+          <a href="./admin.html"><i class="fa fa-user-circle" aria-hidden="true" style="color: white; font-size: 35px;margin-top: 1rem;"></i></a>
         </ul>
-  
-    </header>
+        <div class="toggle_btn">
+          <i class="fa fa-bars"></i>
+        </div>
+        <div class="dropdown_menu">
+          <li><a href="./home.html">Home</a></li>
+          <li><a href="./About.html">About</a></li>
+          <li><a href="./contactform.html">Contact</a></li>
+          <li><a href="./portfolio.html">portfolio</a></li>
+          <li><a href="./blogs.html">blogs</a></li>
+          <li><a href="./#">sign in</a></li>
+         <a href="./admin.html"><i class="fa fa-user-circle" aria-hidden="true" style="color: white; font-size: 35px;margin-top: 1rem;"></i></a>
+        </div>
   </header>
-  <div class="sign-in">
-    <h2><u>LOGIN FORM</u></h2>
-    <form action="check-login.php" method="post">
-        <label for="">User name</label>
-      <input type="text" id="" name=""placeholder="username">
-      <label for="">Password</label>
-      <input type="password" id="" name=""placeholder="password">
-       <br>
-      <button>LOGIN</button>
-    </form>
-<h3>FOREGET PASSWORD</h3>
-<H4>Do you have an acount?<u><a href="./sign-up.html">Create account</a></u></H4>
+ 
+<div class="container">
+  <form action="/action_page.php">
+    <div class="row">
+      <h1 style="text-align:center">Login With </h1>
+      <div class="vl">
+        <span class="vl-innertext">OR</span>
+      </div>
+
+      <div class="col">
+        <a href="#" class="fb btn">
+          <i class="fa fa-facebook fa-fw"></i> Login with Facebook
+         </a>
+        <a href="#" class="twitter btn">
+          <i class="fa fa-twitter fa-fw"></i> Login with Twitter
+        </a>
+        <a href="#" class="google btn"><i class="fa fa-google fa-fw">
+          </i> Login with Google+
+        </a>
+      </div>
+      <div class="col">
+        <div class="hide-md-lg">
+          <p>Or sign in manually:</p>
+        </div>
+
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <input type="submit" value="Login">
+      </div>
+      
+    </div>
+  </form>
+</div>
+<div class="bottom-container">
+  <div class="row">
+    <div class="col">
+      <a href="./sign_up.html" style="color:white" class="btn" >Sign up</a>
+    </div>
+    <div class="col">
+      <a href="./sign_up.html" style="color:white" class="btn">Forgot password?</a>
+    </div>
   </div>
-  <hr>
+</div>
    <footer>
           <div class="social-links">
             <p> @2024 All right reserved. Developed By Cedro Group</p><br>
@@ -63,5 +101,19 @@
           </div>
           
         </footer>
+        <script>
+          const toggleBtn = document.querySelector('.toggle_btn')
+          const toggleBtnIcon = document.querySelector('.toggle_btn i')
+          const dropDownMenu = document.querySelector('.dropdown_menu')
+      
+          toggleBtn.onclick = function () {
+            dropDownMenu.classList.toggle('open')
+            const isOpen = dropDownMenu.classList.contains('open')
+      
+            toggleBtnIcon.classList = isOpen
+              ? 'fa-solid fa-xmark'
+              : 'fa-solid fa-bars'
+          } 
+        </script>
 </body>
 </html>
