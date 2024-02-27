@@ -216,7 +216,7 @@ span {
   .service-content{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(450px, auto));
-    grid-gap: 2rem;
+    grid-gap: 1rem;
     padding: 50px;
     align-items: center;
     margin:  3rem 3rem 5rem ;
@@ -387,7 +387,7 @@ h1{
 }
 
 /* media query for responsiveness */
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 835px) {
   /* Navbar styles */
   .navbar {
     display: flex;
@@ -435,16 +435,16 @@ h1{
     margin: 10px 0;
   }
 }
-  @media (max-width: 768px) {
+  @media (max-width: 835px) {
     .dropdown_menu{
-      left: 2rem;
+      right: 6rem;
       width: unset;
     }
   }
  
 /* contact me page responsiveness query */
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 835px) {
   .Contact {
     flex-direction: column;
     align-items: center;
@@ -469,35 +469,38 @@ h1{
     margin-left: 0;
   }
 }
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 835px) {
+  
   .services{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-margin-right: 0;
-margin-left: -2rem;
+   display: flex;
+   flex-direction: column;
+   width: 100%;
+   margin-right: 0;
+   margin-left: -1.5rem;
   }
   .center{
     width: 80%;
+    margin-left: 2.5rem;
   }
-
   .service-content {
-    width: 80%;
+    padding: 20px;
+    width: 120%;
     margin: 0;
   }
   .skill-box{
     width: 80%;
   }
   .row{
-    width: 70%;
+    width: 80%;
+
   }
 
 }
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 835px) {
 .h1{
-margin-top: 2rem;
-margin-left: -5rem;
-font-size: 9px;
+margin-top: 4rem;
+margin-left: -4rem;
+font-size: 15px;
 }
   .blogs{
     width: 100%;
@@ -514,7 +517,7 @@ font-size: 9px;
   }
 
 }
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 835px) {
   footer {
     gap: 30px;
     margin-left: -3.5rem;

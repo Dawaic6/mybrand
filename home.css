@@ -296,7 +296,6 @@ font-family: Arial, Helvetica, sans-serif;
 
 /* style the container */
 .container {
-  position: relative;
   border-radius: 5px;
   background-color: #979591;
   padding: 20px 0 30px 0;
@@ -327,7 +326,6 @@ input:hover,
 /* add appropriate colors to fb, twitter and google buttons */
 .fb {
   background-color: #5383a8;
-  background-color:;
   color: white;
 }
 
@@ -338,7 +336,6 @@ input:hover,
 
 .google {
   background-color: #5383a8;
-  background-color:;
   color: white;
 }
 
@@ -489,7 +486,7 @@ th, td {
 }
 
 th {
-  background-color: #f2f2f2;
+  background-color: #a3a0a0;
 }
 
 button {
@@ -572,15 +569,17 @@ footer {
 }
 
 /* media query for responsiveness */
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 835px) {
   /* Navbar styles */
   .navbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 60px;
-    margin-left: 1rem;
-    margin-right: 2rem;
+    margin-left: -5rem;
+    margin-right: -1rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
   }
 
   .navbar .toggle_btn{
@@ -591,8 +590,8 @@ footer {
     display: block;
   }
 
-  .navbar .logo a {
-    margin-left: 0;
+  .navbar .logo  {
+    margin-left: ;
     margin-bottom: 10px;
   }
 
@@ -603,7 +602,7 @@ footer {
     width: 100%;
     text-align: center;
     background-color: rgb(44, 43, 43);
-    position: absolute;
+    position: relative;
     top: 70px;
     left: 0;
   }
@@ -627,9 +626,9 @@ footer {
   }
 
   .home-text {
-    width: 100%;
+    width: 150%;
     margin-left: 0;
-    text-align: center;
+    text-align: left;
     margin-bottom: 2rem;
   }
 
@@ -652,7 +651,7 @@ footer {
   }
 
   .home-social-links {
-    margin-left: 10%;
+    margin-left: 0%;
     margin-right: 10%;
     padding:5px 5px;
     gap: 2px;
@@ -662,16 +661,17 @@ footer {
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 835px) {
   .dropdown_menu{
-    left: 5rem;
+    position:relative;
+    left: 1rem;
     width: unset;
   }
 }
 
 /* about me query */
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 820px) {
   .About {
     flex-direction: column;
     align-items: center;
@@ -701,7 +701,7 @@ footer {
 
 /* contact me page responsiveness query */
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 835px) {
   .Contact {
     flex-direction: column;
     align-items: center;
@@ -724,7 +724,14 @@ footer {
   }
 }
 /*sign in page*/
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 835px) {
+  .container{
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+  .bottom-container{
+    margin-bottom: 5rem;
+  }
   .col {
     width: 100%;
     margin-top: 0;
@@ -739,9 +746,18 @@ footer {
     text-align: center;
   }
 }
-@media screen and (max-width: 700px) {
+/*admin*/
+@media screen and (max-width: 835px) {
+.color{
+  justify-content: center;
+  align-items: center;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+}
+@media screen and (max-width: 835px) {
 footer {
-  margin-left: -2rem;
-  gap: 30px;
+  margin-left: -4rem;
+  gap: 20px;
 }
 }
