@@ -339,13 +339,25 @@ input:hover,
   color: white;
 }
 
+
 /* style the submit button */
 input[type=submit] {
   background-color: #04AA6D;
   color: rgb(11, 11, 11);
   cursor: pointer;
 }
-
+.hide-md-lg  input:focus{
+outline: 0;
+}
+.hide-md-lg.succes input{
+  border-color: #4CAF50;
+  }
+  .hide-md-lg.error input{
+    border-color: #ff3860;
+    }
+    .hide-md-lg.error{
+      border-color: #ff3860;
+      }
 input[type=submit]:hover {
   background-color: #45a049;
 }

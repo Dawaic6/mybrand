@@ -22,7 +22,7 @@
           <li><a href="./portfolio.html">portfolio</a></li>
           <li><a href="./blogs.html">blogs</a></li>
           <li><a href="./#">sign in</a></li>
-          <a href="./admin.html"><i class="fa fa-user-circle" aria-hidden="true" style="color: white; font-size: 35px;margin-top: 1rem;"></i></a>
+          <a href="./index.html"><i class="fa fa-user-circle" aria-hidden="true" style="color: white; font-size: 35px;margin-top: 1rem;"></i></a>
         </ul>
          <div class="toggle_btn">
           <i class="fa fa-bars"></i>
@@ -39,7 +39,7 @@
   </header>
  
 <div class="container">
-  <form action="/action_page.php">
+  <form onsubmit="return validate()" action="./home.html">
     <div class="row">
       <h1 style="text-align:center">Login With </h1>
       <div class="vl">
@@ -61,9 +61,10 @@
         <div class="hide-md-lg">
           <p>Or sign in manually:</p>
         </div>
-
-        <input type="text" name="username" placeholder="Username" required>
-        <input type="password" name="password" placeholder="Password" required>
+        <input id="username" type="text" name="username" placeholder="Username" >
+        <div class="error"></div>
+        <input id="password" type="password" name="password" placeholder="Password" >
+        <div class="error"></div>
         <input type="submit" value="Login">
       </div>
       
@@ -96,12 +97,74 @@
           </div>
           <div class="subscribe">
               <p>Subscribe to our Articles To Get More..</p>
-              <input type="email" placeholder="Enter your email">
+              <form action="">
+              <input type="email" placeholder="Enter your email" required>
               <button>Subscribe</button>
+              </form>
           </div>
           
         </footer>
         <script>
+          function validate(){
+          var username = document.getElementById("username");
+          var password = document.getElementById("password");
+
+          if(username.value.trim() =="" || password.value ==""){
+            alert("No blank value allowed");
+            return false
+          }
+          else{
+            return true
+          }
+          }
+          
+      /*   
+    const username = document.getElementById("username");
+    const password = document.getElementById("password");
+
+form.addEventListener('submit', e => {
+    e.precentDefault();
+
+    validateInputs();
+});
+
+const setError = (element, message) =>{
+    const inputControl = element.parentElement;
+    const errorDisplay = inputControl.querySelector('.error');
+
+    errorDisplay.innerText = message;
+    inputControl.classList.add('error');
+    inputControl.classList.remove('success')
+}
+const setSuccess = element => {
+    const inputControl = element.parentElement;
+    const errorDisplay = inputControl.querySelector('.error');
+
+    errorDisplay.innerText = '';
+    inputControl.classList.add('success');
+    inputControl.classList.remove('error')
+}
+
+const validateInputs =() =>{
+    const usernameValue = username.value.trim();
+    const passwordValue = password.value;
+};
+
+    if(username.value === ''){
+    setError(username, 'username is required')
+    }
+    else{
+    setSuccess(username)
+    }
+    if(password.value === ''){
+        setError(password, 'password is required')
+        }
+        if(password.length < 10){
+            setError(password.'password must be at least 10 characters.')
+        }
+        else{
+        setSuccess(password)
+        }*/
           const toggleBtn = document.querySelector('.toggle_btn')
           const toggleBtnIcon = document.querySelector('.toggle_btn i')
           const dropDownMenu = document.querySelector('.dropdown_menu')
