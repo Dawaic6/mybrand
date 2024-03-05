@@ -14,6 +14,7 @@
     rel="stylesheet">
     <title>Document</title>
     <link rel="stylesheet" href="./contact.css">
+    <link rel="stylesheet" href="./dash-blogs.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
@@ -65,11 +66,11 @@
             </div>
         </div>
         <div class="contact-form">
-            <form>
-                <input type="text" name="fname" placeholder="enter your names.." required>
-                <input type="text" name="email" placeholder="enter your email.." required>
-                <textarea name="message" id="" cols="45" rows="5" placeholder="enter your meassage.." required></textarea>
-                <button>Send Message</button>
+            <form id="form" action="./home.html">
+                <input id="username" type="text" name="fname" placeholder="enter your names.." >
+                <input  id="email" type="text" name="email" placeholder="enter your email.." >
+                <textarea itemid="area" name="message" id="" cols="45" rows="5" placeholder="enter your meassage.." ></textarea>
+                <button type="submit" >Send Message</button>
             </form>
         </div>
     </section>
@@ -97,6 +98,49 @@
           
         </footer>
         <script>
+          const form = document.getElementById("form");
+    const username = document.getElementById("username");
+    const email = document.getElementById("email");
+
+form.addEventListener('submit', e => {
+    e.precentDefault();
+      validateInputs();
+});
+
+const setError = (element, message) =>{
+    const inputControl = element.parentElement;
+    const errorDisplay = inputControl.querySelector('.error');
+
+    errorDisplay.innerText = message;
+    inputControl.classList.add('error');
+    inputControl.classList.remove('success')
+}
+const setSuccess = element => {
+    const inputControl = element.parentElement;
+    const errorDisplay = inputControl.querySelector('.error');
+
+    errorDisplay.innerText = '';
+    inputControl.classList.add('success');
+    inputControl.classList.remove('error')
+}
+
+const validateInputs =() =>{
+    const usernameValue = username.value.trim();
+    const emailValue = email.value;
+};
+
+    if(username.value === ''){
+    setError(username, 'username is required')
+    }
+    else{
+    setSuccess(username)
+    }
+    if(email.value === ''){
+        setError(email, 'email required')
+        }
+        else{
+        setSuccess(email)
+        }
           const toggleBtn = document.querySelector('.toggle_btn')
           const toggleBtnIcon = document.querySelector('.toggle_btn i')
           const dropDownMenu = document.querySelector('.dropdown_menu')

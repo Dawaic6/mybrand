@@ -25,28 +25,28 @@
          <!-- end top -->
           <div class="sidebar">
 
-            <a href="#" class="active">
+            <a href="./index.html" class="active">
               <span class="material-symbols-sharp">grid_view </span>
               <h3>Dashbord</h3>
            </a>
-           <a href="./user1.html">
+           <a href="#">
               <span class="material-symbols-sharp">person_outline </span>
               <h3>Users</h3>
            </a>
-           <a href="#">
+           <a href="./projectes.html">
             <span class="material-symbols-sharp">receipt_long </span>
             <h3>Projects</h3>
          </a>
-           <a href="#">
+           <a href="./masseges.html">
               <span class="material-symbols-sharp">mail_outline </span>
               <h3>Messages</h3>
               <span class="msg_count">3</span>
            </a>
-           <a href="#">
+           <a href="./dash-blogs.html">
               <span class="material-symbols-sharp">trending_up </span>
               <h3>blogs</h3>
            </a>
-           <a href="#">
+           <a href="./signin.html">
               <span class="material-symbols-sharp">logout </span>
               <h3>logout</h3>
            </a>
@@ -62,35 +62,85 @@
       --------------- -->
 
       <main>
-           <h1>Dashbord</h1>
+           <h1>Users</h1>
 
            <div class="date">
              <input type="date" >
            </div>
 
-           <div class="color" style="background-color: rgb(214, 206, 206); border-radius: 10px;">
-            <h1>User Admin</h1>
-            <form id="user-form">
-                <label for="name">Username:</label>
-                <input type="text" id="Username" name="Username" required>
-              
-                <label for="password">Password:</label>
-                <input type="text" id="password" name="password" required>
-                <button type="submit">Add User</button>
-            </form>
-            <table id="user-table">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Password</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-            <hr style="color: white; border-radius: 3px; margin-top: 4rem;">
-          </div>
+       
+      
+       <!-- end insights -->
+      <div class="recent_order">
+         <h2>Users Acounts</h2>
+         <table> 
+             <thead>
+              <tr>
+                <th>No</th>
+                <th>UserName</th>
+                <th>Password</th>
+                <th>Registered Date</th>
+                <th>User Role</th>
+                <th>Edit action</th>
+                <th>Delete action</th>
+              </tr>
+             </thead>
+              <tbody>
+                 <tr>
+                  <th>1</th>
+                   <td>Cedric</td>
+                   <td>14563</td>
+                   <td>02/12/2024</td>
+                   <td>user</td>
+                   <td class="warning">Edit</td>
+                   <td class="primary">Delete</td>
+                 </tr>
+                 <tr>
+                  <th>2</th>
+                  <td>Eric</td>
+                  <td>12345</td>
+                  <td>02/12/2024</td>
+                  <td>user</td>
+                  <td class="warning">Edit</td>
+                  <td class="primary">Delete</td>
+                </tr>
+                <tr>
+                  <th>3</th>
+                  <td>Manzi</td>
+                  <td>54321</td>
+                  <td>02/23/2024</td>
+                  <td>user</td>
+                  <td class="warning">Edit</td>
+                  <td class="primary">Delete</td>
+                </tr>
+                <tr>
+                  <th>5</th>
+                  <td>Devin</td>
+                  <td>00000</td>
+                  <td>02/14/2024</td>
+                  <td>user</td>
+                  <td class="warning">Edit</td>
+                  <td class="primary">Delete</td>
+                </tr>
+                <th>6</th>
+                <td>Devin</td>
+                  <td>00000</td>
+                  <td>02/14/2024</td>
+                  <td>user</td>
+                  <td class="warning">Edit</td>
+                  <td class="primary">Delete</td>
+                </tr>
+                <th>7</th>
+                <td>Devin</td>
+                  <td>00000</td>
+                  <td>02/14/2024</td>
+                  <td>user</td>
+                  <td class="warning">Edit</td>
+                  <td class="primary">Delete</td>
+                </tr>
+              </tbody>
+         </table>
+      </div>
 
       </main>
       <!------------------
@@ -100,8 +150,8 @@
       <!----------------
         start right main 
       ---------------------->
-    <div class="right">
-
+    
+      <div class="right">
 <div class="top">
    <button id="menu_bar">
      <span class="material-symbols-sharp">menu</span>
@@ -123,59 +173,44 @@
     </div>
 </div>
 
-  <div class="recent_updates">
-     <h2>Recent Update About blogs</h2>
-   <div class="updates">
-      <div class="update">
-         <div class="profile-photo">
-            <img src="./blog1.png" alt=""/>
-         </div>
-        <div class="message">
-           <p><b> First blog updated</b></p>
-        </div>
-      </div>
-      <div class="update">
-        <div class="profile-photo">
-        <img src="./blog2.png" alt=""/>
-        </div>
-       <div class="message">
-          <p><b>Second blog updated </b></p>
-       </div>
-     </div>
-    
-  </div>
-  </div>
+ 
 
-
-   <div class="sales-analytics">
-     <h2>Some comments</h2>
-
-      <div class="item onlion">
-        
-        <div class="right_text">
-          <div class="info">
-            <h2>Eric</h2>
-            <small class="text-muted">I am  happy  to  be one of your web site User </small>
-            <br><small>It' good web site</small>
-          </div>
-        </div>
-      </div>
-      
-
-</div>
-
-      <div class="item add_product">
-            <div>
-            <span class="material-symbols-sharp">add</span>
-            </div>
-     </div>
-</div>
-
-
+  <div class="recent_order" style="margin-left: -5rem; margin-top: 4rem;" >
+    <h2>Users Acounts</h2>
+    <table > 
+        <thead>
+         <tr>
+           <th>No</th>
+           <th>UserName</th>
+           <th> Date</th>
+           <th>User Role</th>
+         </tr>
+        </thead>
+         <tbody></tbody>
+            <tr>
+             <th>1</th>
+             <td>Eric</td>
+             <td>02/12/2024</td>
+             <td>user</td>
+           </tr>
+           <tr>
+             <th>2</th>
+             <td>Manzi</td>
+             <td>02/23/2024</td>
+             <td>user</td>
+           </tr>
+           <tr>
+             <th>3</th>
+             <td>Devin</td>
+             <td>02/14/2024</td>
+             <td>user</td>
+            
+           
+         </tbody>
+    </table>
+ </div>
+      </div> 
    </div>
-
-
-
    <script src="script.js"></script>
 </body>
 </html>

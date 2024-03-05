@@ -34,7 +34,7 @@
           <li><a href="./portfolio.html">portfolio</a></li>
           <li><a href="./blogs.html">blogs</a></li>
           <li><a href="./#">sign in</a></li>
-         <a href="./admin.html"><i class="fa fa-user-circle" aria-hidden="true" style="color: white; font-size: 35px;margin-top: 1rem;"></i></a>
+         <a href="./index.html"><i class="fa fa-user-circle" aria-hidden="true" style="color: white; font-size: 35px;margin-top: 1rem;"></i></a>
         </div>
   </header>
  
@@ -61,6 +61,7 @@
         <div class="hide-md-lg">
           <p>Or sign in manually:</p>
         </div>
+        <p id="validationMessage" style="color: rgba(255, 0, 0, 0.87);font-size: 1.5rem;"></p>
         <input id="username" type="text" name="username" placeholder="Username" >
         <div class="error"></div>
         <input id="password" type="password" name="password" placeholder="Password" >
@@ -110,7 +111,7 @@
           var password = document.getElementById("password");
 
           if(username.value.trim() =="" || password.value ==""){
-            alert("No blank value allowed");
+            document.getElementById('validationMessage').innerText = "Username or Password is incorrect try again";
             return false
           }
           else{

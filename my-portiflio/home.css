@@ -218,15 +218,19 @@ span {
   .about-text h3 {
     font-size: 1.2em;
     margin:15px 0 20px 0;
+    color: #fe6109;
   }
   .about-text h4 {
     font-size: 1em;
     margin:15px 0 15px 0;
+    
   }
   .about-text h5 {
     font-size: 1em;
     font-weight: var(--p-font);
     margin:15px 0 15px 0;
+    color: #fe6109;
+    
   }
 
   .about-text h5 span:hover{
@@ -260,9 +264,11 @@ span {
   /* about my skills */
 
 .skills{
-
     margin: 2rem 0 0 5rem;
     margin-left: 3rem;
+  }
+  .skills h2{
+      color: #fe6109;
   }
   
 .skill-box-container {
@@ -273,6 +279,7 @@ span {
 }
 
 .skill-box {
+  color: #b17857;
     width: 100px;
     height: 30px;
     padding: 5px;
