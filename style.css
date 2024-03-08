@@ -31,10 +31,10 @@
 
 /* dark theme */
 .dark-theme-variables {
-  --clr-color-background: #181a1e;
+  --clr-color-background: #21201E;
   --clr-white: #edeffdcc;
   --clr-light: rgba(0, 0, 0, 0.4);
-  --clr-dark:#8d8c8b7c;
+  --clr-dark:#FFFCFC;
   --clr-date:black;
   --clr-dark-variant: #677483;
   --box-shadow: 0 2rem 3rem var(--clr-light)
@@ -55,7 +55,7 @@
 body{
    width: 100vw;
    height: 100vh;
-   font-size: .7rem;
+   font-size: 0.8rem;
    user-select: none;
    overflow-x: hidden;
    background: var(--clr-color-background);
@@ -76,19 +76,19 @@ a{
 
 h1{
   font-weight: 800;
-  font-size: 2.8rem;
+  font-size: 2.5rem;
 }
 h2{
   font-size: 1.4rem;
 }
 h3{
-  font-size: 0.87;
+  font-size: 0.8;
 }
 h4{
   font-weight: 0.8rem;
 }
 h5{
-  font-size: 0.77rem;
+  font-size: 0.8rem;
 }
 small{
   font-size: 0.75rem;
@@ -146,6 +146,7 @@ b{
  aside .logo img{
    width: 11.5rem;
    height: 4rem;
+   margin-top: -1rem;
  }
  aside .top div.close span{
    display: none;
@@ -308,6 +309,9 @@ main .recent_order{
   box-shadow: var(--box-shadow);
   transition: all .3s ease;
   color: var(--clr-dark);
+}
+.recent_order .table{
+  width: 150%;
 }
  .recent_order table:hover{
   box-shadow: none;
@@ -580,19 +584,21 @@ MEDIA QUERY PHONE
        margin: 0;
     }
 
-
  main .insights{
   display: grid;
   grid-template-columns: repeat(1,1fr);
   gap: 1.6rem;
-  padding: 40px;
+  padding: 20px;
  }
  main .recent_order{
-  padding: 30px;
+  padding: 10px;
   margin: 0 auto;
+  width: 100%;
  }
 
-
+.date{
+  margin-left: 2.2rem;
+}
 
   .right .profile{
     position: absolute;
@@ -619,17 +625,31 @@ MEDIA QUERY PHONE
    }
    .right .recent_order{
     padding: 0 30px;
+    margin-left: 2rem;
+   }
+   .recent_order .table{
+    width: 100%;
+    padding: 10px;
    }
    .right .recent_updates{
-    padding: 0 40px;
+    padding: 0 30px;
+    margin-left: 0.1rem
    }
    .right .sales-analytics{
-    padding: 0 40px;
+    padding: 0 30px;
+    margin-left: 0.1rem;
    }
-   .right .add_product{
+   .right .item-add_product{
     padding: 0 40px;
     margin-bottom: 40px;
+    margin-left: 1rem;
    }
-
+   .respo .recent_order{
+    padding: 7px;
+   }
+ .recent_update .recent_order{
+  margin-left: 1rem;
+  padding: 8px;
+}
 
 }

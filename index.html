@@ -25,7 +25,7 @@
          <!-- end top -->
           <div class="sidebar">
 
-            <a href=".home.html" class="active">
+            <a href="#" class="active">
               <span class="material-symbols-sharp">grid_view </span>
               <h3>Dashbord</h3>
            </a>
@@ -33,16 +33,16 @@
               <span class="material-symbols-sharp">person_outline </span>
               <h3>Users</h3>
            </a>
-           <a href="#">
+           <a href="./projectes.html">
             <span class="material-symbols-sharp">receipt_long </span>
             <h3>Projects</h3>
          </a>
-           <a href="#">
+           <a href="./masseges.html">
               <span class="material-symbols-sharp">mail_outline </span>
               <h3>Messages</h3>
               <span class="msg_count">3</span>
            </a>
-           <a href="#">
+           <a href="./dash-blogs.html">
               <span class="material-symbols-sharp">trending_up </span>
               <h3>blogs</h3>
            </a>
@@ -117,47 +117,48 @@
         </div>
        <!-- end insights -->
       <div class="recent_order">
-         <h2>Recent Messages</h2>
-         <table> 
-             <thead>
-              <tr>
-                <th>UserName</th>
-                <th>Password</th>
-                <th>Date</th>
-                <th colspan="2">Action</th>
-              </tr>
-             </thead>
-              <tbody>
-                 <tr>
-                   <td>Cedric</td>
-                   <td>14563</td>
-                   <td>02/12/2024</td>
-                   <td class="warning">Edit</td>
-                   <td class="primary">Delete</td>
-                 </tr>
-                 <tr>
-                  <td>Eric</td>
-                  <td>12345</td>
-                  <td>02/12/2024</td>
-                  <td class="warning">Edit</td>
-                  <td class="primary">Delete</td>
-                </tr>
-                <tr>
-                  <td>Manzi</td>
-                  <td>54321</td>
-                  <td>02/23/2024</td>
-                  <td class="warning">Edit</td>
-                  <td class="primary">Delete</td>
-                </tr>
-                <tr>
-                  <td>Devin</td>
-                  <td>00000</td>
-                  <td>02/14/2024</td>
-                  <td class="warning">Edit</td>
-                  <td class="primary">Delete</td>
-                </tr>
-              </tbody>
-         </table>
+
+                    <h2>Recent Messages</h2>
+                    <table> 
+                        <thead>
+                         <tr>
+                           <th>UserName</th>
+                           <th>Password</th>
+                           <th>Date</th>
+                           <th colspan="2">Action</th>
+                         </tr>
+                        </thead>
+                         <tbody>
+                            <tr>
+                              <td>Cedric</td>
+                              <td>14563</td>
+                              <td>02/12/2024</td>
+                              <td class="warning" onclick="editRow(this)">Edit</td>
+                <td class="primary" onclick="deleteRow(this)">Delete</td>
+                            </tr>
+                            <tr>
+                             <td>Eric</td>
+                             <td>12345</td>
+                             <td>02/12/2024</td>
+                             <td class="warning" onclick="editRow(this)">Edit</td>
+                <td class="primary" onclick="deleteRow(this)">Delete</td>
+                           </tr>
+                           <tr>
+                             <td>Manzi</td>
+                             <td>54321</td>
+                             <td>02/23/2024</td>
+                             <td class="warning" onclick="editRow(this)">Edit</td>
+                            <td class="primary" onclick="deleteRow(this)">Delete</td>
+                           </tr>
+                           <tr>
+                             <td>Devin</td>
+                             <td>00000</td>
+                             <td>02/14/2024</td>
+                             <td class="warning" onclick="editRow(this)">Edit</td>
+                             <td class="primary" onclick="deleteRow(this)">Delete</td>
+                           </tr>
+                         </tbody>
+                    </table>
       </div>
 
       </main>
@@ -232,7 +233,7 @@
 
 </div>
 
-      <div class="item add_product">
+      <div class="item-add_product">
             <div>
             <span class="material-symbols-sharp">add</span>
             </div>

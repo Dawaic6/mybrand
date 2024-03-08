@@ -132,7 +132,7 @@ b{
   margin-left: 0rem;
  }
  aside .top{
-background-color:  #eaeff5;
+background-color:  ;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -151,9 +151,6 @@ background-color:  #eaeff5;
  aside .top div.close span{
    display: none;
  }
- .right{
-    margin-right: 0.5rem;
-  }
   .right h2{
     color: var(--clr-dark);
   }
@@ -259,7 +256,7 @@ background-color:  #eaeff5;
  ------------------------------ */
 
  .main{
-  margin-top: 0.2rem;
+  margin-top: 0.6rem;
   width: 120%;
   margin-left: 16rem;
  }
@@ -334,7 +331,7 @@ background-color:  #eaeff5;
     color:#858792;
     width: 130%;
     margin-bottom: 20px;
-    height: 75px;
+    height: 70px;
 }
 .textAreaContainer{
     margin-left: -2rem;
@@ -394,7 +391,7 @@ margin-top: 10px;
 /* Blog Table */
 .container_table{
   width:100%;
-  background-color:#fff;
+  background-color:var(--clr-color-background);
   box-shadow:2px 5px 10px rgba(0,0,0,0.5);
   padding-bottom:20px;
 }
@@ -402,23 +399,24 @@ margin-top: 10px;
 
 
 table{
-    
+background-color: var(--clr-color-background) ;
 }
 .container_table p{
   padding:1rem 0rem;
-  font-size:1rem;
+  font-size:.7rem;
   /* text-align:center; */
 }
 
 .tbl{
   width:65%;
   border-collapse:collapse;
-  height: 300px;
+  height: 200px;
 }
 
 .tbl thead{
-  background-color:#424949;
+  background-color:#424949a1;
   color:white;
+  font-size: 10px;
 }
 .tbl tbody{
     color: ;
@@ -427,7 +425,7 @@ table{
 
 .tbl tr:hover td{
   /* background-color:skyblue; */
-  color:#000;
+  color:#000000d8;
   transition:all 0.3s ease-in;
   cursor:pointer;
 }
@@ -438,26 +436,23 @@ table{
   outline:none;
   margin:0 auto;
   padding:0.4rem;
-  border-radius:1px;
+  border-radius:;
   cursor:pointer;
 }
 
 .btn_trash{
-  color:white;
-  background-color:red;
+  color:#7380ec;
   font-weight:900;
 }
 .btn_edit{
-  color:white;
-  background-color:#5B69E2 ;
+  color:#ff4edc;
   font-weight:900;
 }
 .tbl thead tr th{
   color:white;
-  font-size:1rem;
+  font-size:.8rem;
   padding:0.8rem;
   vertical-align:top;
-  letter-spacing: 0.2rem;
   border:1 px solid #aab7b8;
   /* margin-right: 100px; */
   /* display: block; */
@@ -467,21 +462,18 @@ table{
 
 .tbl tbody  tr td{
 text-align:start;
-  font-weight:normal;
-  /* letter-spacing:0.2rem; */
   border:1px solid #aab7ba;
-  font-size:1rem;
-  padding:0.8rem;
-  /* justify-content: space-between; */
+  font-size:.8rem;
+  padding:0.3rem;
     
 }
 .tbl tr:nth-child(even) {
-background:#ccc;
+background:#cccccc3f;
   transition:all 0.3s ease-in;
   cursor:pointer; 
 }
 .tbl tbody tr td img{
-  width: 40px;
+  width: 80px;
   height: 40px;
 }
 
@@ -529,7 +521,6 @@ MEDIA QUERY PHONE
     height: 100vh;
     background-color: var(--clr-white);
     display: none;
-    left: -110px;
     animation:  menuLeft .3s ease forwards;
   }
   
@@ -593,7 +584,7 @@ MEDIA QUERY PHONE
 
   .right .profile{
     position: absolute;
-    left: 70%;
+    left: ;
   }
 
   .right .top .theme-toggler{
@@ -631,6 +622,43 @@ MEDIA QUERY PHONE
 
 }
 @media(max-width:768px){
+.container_table{
+
+}
+.blogFlex{
+  display: flex;
+  flex-direction:column;
+
+}
+.blog-form {
+  width: 80%;
+  margin-left: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+.blogFlex  .blog2, .image ,.date ,.textAreaContainer {
+  margin-left: -1.8rem;
+  width: 95%;
+} 
+.blogFlex .blog2{
+  width: 100%;
+  margin-left: -2rem;
+  margin-bottom: -1.5rem;
+  
+}
+.blogFlex .image{
+  width: 90%;
+  margin-left: -4rem;
+  
+}
+.blogFlex .textAreaContainer{
+  width: 70%;
+  margin-left: -8.8rem;
+  
+}
+.main{
+  margin-left: 1rem;
+}
     .tbl thead{
       display:none;
     }

@@ -71,6 +71,7 @@
        
       
        <!-- end insights -->
+       <div class="respo">
       <div class="recent_order">
          <h2>Users Acounts</h2>
          <table> 
@@ -81,8 +82,7 @@
                 <th>Password</th>
                 <th>Registered Date</th>
                 <th>User Role</th>
-                <th>Edit action</th>
-                <th>Delete action</th>
+                <th colspan="2">Action</th>
               </tr>
              </thead>
               <tbody>
@@ -92,8 +92,9 @@
                    <td>14563</td>
                    <td>02/12/2024</td>
                    <td>user</td>
-                   <td class="warning">Edit</td>
-                   <td class="primary">Delete</td>
+                   <td class="warning" onclick="editRow(this)">Edit</td>
+                <td class="primary" onclick="deleteRow(this)">Delete</td>
+                           
                  </tr>
                  <tr>
                   <th>2</th>
@@ -101,8 +102,9 @@
                   <td>12345</td>
                   <td>02/12/2024</td>
                   <td>user</td>
-                  <td class="warning">Edit</td>
-                  <td class="primary">Delete</td>
+                  <td class="warning" onclick="editRow(this)">Edit</td>
+                  <td class="primary" onclick="deleteRow(this)">Delete</td>
+                             
                 </tr>
                 <tr>
                   <th>3</th>
@@ -110,8 +112,9 @@
                   <td>54321</td>
                   <td>02/23/2024</td>
                   <td>user</td>
-                  <td class="warning">Edit</td>
-                  <td class="primary">Delete</td>
+                  <td class="warning" onclick="editRow(this)">Edit</td>
+                  <td class="primary" onclick="deleteRow(this)">Delete</td>
+                             
                 </tr>
                 <tr>
                   <th>5</th>
@@ -119,29 +122,32 @@
                   <td>00000</td>
                   <td>02/14/2024</td>
                   <td>user</td>
-                  <td class="warning">Edit</td>
-                  <td class="primary">Delete</td>
+                  <td class="warning" onclick="editRow(this)">Edit</td>
+                  <td class="primary" onclick="deleteRow(this)">Delete</td>
+                             
                 </tr>
                 <th>6</th>
                 <td>Devin</td>
                   <td>00000</td>
                   <td>02/14/2024</td>
                   <td>user</td>
-                  <td class="warning">Edit</td>
-                  <td class="primary">Delete</td>
+                  <td class="warning" onclick="editRow(this)">Edit</td>
+                  <td class="primary" onclick="deleteRow(this)">Delete</td>
+                             
                 </tr>
                 <th>7</th>
                 <td>Devin</td>
                   <td>00000</td>
                   <td>02/14/2024</td>
                   <td>user</td>
-                  <td class="warning">Edit</td>
-                  <td class="primary">Delete</td>
+                  <td class="warning" onclick="editRow(this)">Edit</td>
+                <td class="primary" onclick="deleteRow(this)">Delete</td>
+                           
                 </tr>
               </tbody>
          </table>
       </div>
-
+</div>
       </main>
       <!------------------
          end main
@@ -174,15 +180,14 @@
 </div>
 
  
-
-  <div class="recent_order" style="margin-left: -5rem; margin-top: 4rem;" >
-    <h2>Users Acounts</h2>
+<div class="recent_update">
+  <div class="recent_order" style=" margin-top: 4rem;" >
+    <h2> New User Acounts</h2>
     <table > 
         <thead>
          <tr>
            <th>No</th>
            <th>UserName</th>
-           <th> Date</th>
            <th>User Role</th>
          </tr>
         </thead>
@@ -190,25 +195,23 @@
             <tr>
              <th>1</th>
              <td>Eric</td>
-             <td>02/12/2024</td>
              <td>user</td>
            </tr>
            <tr>
              <th>2</th>
              <td>Manzi</td>
-             <td>02/23/2024</td>
              <td>user</td>
            </tr>
            <tr>
              <th>3</th>
              <td>Devin</td>
-             <td>02/14/2024</td>
              <td>user</td>
             
            
          </tbody>
     </table>
  </div>
+</div>
       </div> 
    </div>
    <script src="script.js"></script>

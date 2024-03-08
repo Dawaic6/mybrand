@@ -14,7 +14,6 @@
     rel="stylesheet">
     <title>Document</title>
     <link rel="stylesheet" href="./contact.css">
-    <link rel="stylesheet" href="./dash-blogs.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
@@ -66,13 +65,16 @@
             </div>
         </div>
         <div class="contact-form">
-            <form id="form" action="./home.html">
-                <input id="username" type="text" name="fname" placeholder="enter your names.." >
-                <input  id="email" type="text" name="email" placeholder="enter your email.." >
-                <textarea itemid="area" name="message" id="" cols="45" rows="5" placeholder="enter your meassage.." ></textarea>
-                <button type="submit" >Send Message</button>
-            </form>
-        </div>
+          <form id="form" action="#" onsubmit="return validateForm()">
+              <input id="username" type="text" name="fname" placeholder="enter your name..">
+              <div id="nameError" class="error"></div>
+              <input id="email" type="text" name="email" placeholder="enter your email..">
+              <div id="emailError" class="error"></div>
+              <textarea id="message" name="message" cols="45" rows="5" placeholder="enter your message.."></textarea>
+              <div id="messageError" class="error"></div>
+              <button type="submit">Send Message</button>
+          </form>
+      </div>
     </section>
     <hr>
   </main>
@@ -98,49 +100,79 @@
           
         </footer>
         <script>
-          const form = document.getElementById("form");
-    const username = document.getElementById("username");
-    const email = document.getElementById("email");
+        function validateForm() {
+    var username = document.getElementById('username').value.trim();
+    var email = document.getElementById('email').value.trim();
+    var message = document.getElementById('message').value.trim();
+    var valid = true;
 
-form.addEventListener('submit', e => {
-    e.precentDefault();
-      validateInputs();
-});
+    document.getElementById('nameError').innerHTML = '';
+    document.getElementById('emailError').innerHTML = '';
+    document.getElementById('messageError').innerHTML = '';
 
-const setError = (element, message) =>{
-    const inputControl = element.parentElement;
-    const errorDisplay = inputControl.querySelector('.error');
-
-    errorDisplay.innerText = message;
-    inputControl.classList.add('error');
-    inputControl.classList.remove('success')
-}
-const setSuccess = element => {
-    const inputControl = element.parentElement;
-    const errorDisplay = inputControl.querySelector('.error');
-
-    errorDisplay.innerText = '';
-    inputControl.classList.add('success');
-    inputControl.classList.remove('error')
-}
-
-const validateInputs =() =>{
-    const usernameValue = username.value.trim();
-    const emailValue = email.value;
-};
-
-    if(username.value === ''){
-    setError(username, 'username is required')
+    if (username === '') {
+        document.getElementById('nameError').innerHTML = 'Please enter your name.';
+        valid = false;
     }
-    else{
-    setSuccess(username)
+
+    if (email === '') {
+        document.getElementById('emailError').innerHTML = 'Please enter your email.';
+        valid = false;
+    } else if (!validateEmail(email)) {
+        document.getElementById('emailError').innerHTML = 'Please enter a valid email address.';
+        valid = false;
     }
-    if(email.value === ''){
-        setError(email, 'email required')
-        }
-        else{
-        setSuccess(email)
-        }
+
+    if (message === '') {
+        document.getElementById('messageError').innerHTML = 'Please enter your message.';
+        valid = false;
+    }
+
+    if (valid) {
+        var formData = {
+            username: username,
+            email: email,
+            message: message
+        };
+
+        // Retrieve existing messages from local storage or initialize as empty array
+        var messages = JSON.parse(localStorage.getItem('messages')) || [];
+        messages.push(formData);
+
+        // Save updated messages to local storage
+        localStorage.setItem('messages', JSON.stringify(messages));
+
+        // After storing the new message, populate the recent messages table
+        populateRecentMessages();
+    }
+
+    return false; // Prevent form submission
+}
+
+function validateEmail(email) {
+    var re = /\S+@\S+\.\S+/;
+    return re.test(email);
+}
+
+// Function to populate recent messages table from local storage
+function populateRecentMessages() {
+    var messages = JSON.parse(localStorage.getItem('messages')) || [];
+    var tableBody = document.querySelector('#recentMessagesTable tbody');
+    tableBody.innerHTML = '';
+
+    messages.forEach(function(message, index) {
+        var row = tableBody.insertRow();
+        row.insertCell().textContent = index + 1; // user id
+        row.insertCell().textContent = message.username;
+        row.insertCell().textContent = message.email;
+        row.insertCell().textContent = message.message;
+        var actionCell = row.insertCell();
+        actionCell.textContent = 'Delete';
+        actionCell.classList.add('primary');
+    });
+}
+populateRecentMessages();
+
           const toggleBtn = document.querySelector('.toggle_btn')
           const toggleBtnIcon = document.querySelector('.toggle_btn i')
           const dropDownMenu = document.querySelector('.dropdown_menu')
