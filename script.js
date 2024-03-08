@@ -55,13 +55,13 @@ function fetchAndPopulateTable() {
         <td data-table="user id">${index + 1}</td>
         <td data-table="UserName">${message.username}</td>
         <td data-table="UserEmail>${message.email}</td>
-        <tddata-table="message">${message.message}</td>
+        <td data-table="message">${message.message}</td>
         <td>
             <button class="warning" onclick="markMessage(${index})">Mark</button>
             <button class="primary" onclick="deleteMessage(${index})">Delete</button>
         </td>
         `;
-        recent_order.appendChild(blogDiv);
+        recent_order.appendChild(row);
     });
 }
 
