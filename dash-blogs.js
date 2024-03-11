@@ -196,16 +196,9 @@ function validateBlogForm() {
   document.addEventListener("DOMContentLoaded", fetchAndPopulateTable);
   
   function deleteBlog(index) {
-    // Retrieve existing blog data from local storage
     let existingBlogs = JSON.parse(localStorage.getItem("blogs")) || [];
-  
-    // Remove the blog at the specified index
     existingBlogs.splice(index, 1);
-  
-    // Store the updated list back in local storage
     localStorage.setItem("blogs", JSON.stringify(existingBlogs));
-  
-    // Fetch and populate the table with the updated data
     fetchAndPopulateTable();
   }
   function editBlog(index) {
@@ -216,7 +209,7 @@ function validateBlogForm() {
     const blogToEdit = existingBlogs[index];
 
     // Populate the form with the data for editing
-    imageInput.value = ""; // Clear the file input to ensure user selects a new image
+    imageInput.value = ""; 
     dateInput.value = blogToEdit.date;
     blogTitleInput.value = blogToEdit.title;
     descriptionInput.value = blogToEdit.description;

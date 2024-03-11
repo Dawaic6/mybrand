@@ -23,7 +23,7 @@
   --border-radius-2: 0.8rem;
   --border-radius-3: 1.2rem;
 
-  --card-padding: 1.8rem;
+  --card-padding: 3rem;
   --padding-1: 1.2rem;
   --box-shadow: 0 2rem 3rem var(--clr-light);
 
@@ -172,8 +172,8 @@ b{
  aside .sidebar a{
   display: flex;
   color: var(--clr-info-dark);
-  margin-left: 2rem;
-  gap: 1rem;
+  margin-left: 1.2rem;
+  gap: .3rem;
   align-items: center;
   height: 3.9rem;
   transition: all .1s ease;
@@ -181,8 +181,7 @@ b{
  }
 
  aside .sidebar a span{
-  font-size: 1.6rem;
-  transition: all .3s ease-in-out;
+  font-size: 1.5rem;
   
  }
  
@@ -207,7 +206,6 @@ b{
  main{
   margin-top: 1.4rem;
   width: 85%;
-  margin-left: rem;
  }
  main input {
   background-color: transparent;
@@ -225,9 +223,10 @@ b{
  }
 
 main .insights{
-   display: grid;
-   grid-template-columns: repeat(3,1fr);
-   gap: 0.7rem;
+  display: flex;
+  flex-direction: row;
+   gap: 1rem;
+
 }
 main .insights>div{
    background-color: var(--clr-white);
@@ -235,7 +234,7 @@ main .insights>div{
    border-radius: var(--card-border-radius);
    margin-top: 1rem;
    box-shadow: var(--box-shadow);
-   transition: all .3s ease;
+   transition: all .1s ease
 }
 
 main .insights > div:hover{
@@ -243,10 +242,14 @@ main .insights > div:hover{
 }
 main .insights>div  span{
    background: coral;
-    padding: 0.5rem;
+    padding: 1.5rem;
      border-radius: 50%;
      color: var(--clr-white);
-     font-size: 2rem; 
+     font-size: 1.5rem;
+     display: flex;
+     align-items: center;
+     justify-content: center; 
+     margin-top: -1rem;
   }
 
 main .insights > div.expenses span{
@@ -259,10 +262,13 @@ main .insights > div.income span{
 main .insights > div .middle{
    display: flex;
    align-items: center;
-   justify-content: space-between;
+   justify-content: center;
 }
 main .insights > div .middle h1{
   font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 main h1{

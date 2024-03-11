@@ -49,7 +49,8 @@
     <section class="Contact">
         <div class="contact-text">
             <h1>Contact  Me</h1>
-            <p>Microsoft Azure, formerly known as Windows Azure, is Microsoft's public cloud computing platform. It provides a ran .</p>
+            <p>Welcome dear, It's your right to ask any help about website and application Development . <br>
+           So, chat with us by copmleting the form on right side  </p>
             <h4>
               <a href="#"><i class="fa fa-envelope"></i></a>
                  iradukundasangwacedric@gmail.com <br>
@@ -154,23 +155,6 @@ function validateEmail(email) {
     return re.test(email);
 }
 
-// Function to populate recent messages table from local storage
-function populateRecentMessages() {
-    var messages = JSON.parse(localStorage.getItem('messages')) || [];
-    var tableBody = document.querySelector('#recentMessagesTable tbody');
-    tableBody.innerHTML = '';
-
-    messages.forEach(function(message, index) {
-        var row = tableBody.insertRow();
-        row.insertCell().textContent = index + 1; // user id
-        row.insertCell().textContent = message.username;
-        row.insertCell().textContent = message.email;
-        row.insertCell().textContent = message.message;
-        var actionCell = row.insertCell();
-        actionCell.textContent = 'Delete';
-        actionCell.classList.add('primary');
-    });
-}
 populateRecentMessages();
 
           const toggleBtn = document.querySelector('.toggle_btn')
