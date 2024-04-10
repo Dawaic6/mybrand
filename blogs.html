@@ -24,7 +24,7 @@
           <li><a href="./signin.html">sign in</a></li>
         </ul>
         <div class="toggle_btn">
-            <i class="fa-solid fa-bars"></i>
+            <i class="fa fa-bars"></i>
           </div>
         </div>
         <div class="dropdown_menu">
@@ -38,61 +38,12 @@
           </div>
     </header>
   <main>
-    <div class="h1">
-    <h1>Research <span>And</span> Publications</h1>
-    </div>
-    <section class="blogs">
-      
-        <div class="blogs-img">
-            <img src="./blog1.png" alt="">
-        </div>
+    <h1>Research <span> and Publication</span></h1>
+    <section class="sectionFive" id="blog"></section>
+    <div class="blogSectionmain">
         
-        <div class="blogs-text">
-            <p>
-                A strong UI Developer resume should emphasize the candidate's ability to design and develop user interfaces that result in increased user engagement, satisfaction, and overall application performance. Highlighting collaboration with product managers, designers, and cross-functional teams showcases the ability to work effectively in a team environment. 
-            </p>
-        </div>
-        
-    </section>
-    <section class="blogs">
-        <div class="blogs-img">
-            <img src="./blog2.png" alt="">
-        </div>
-        
-        <div class="blogs-text">
-            <p>
-                A strong UI Developer resume should emphasize the candidate's ability to design and develop user interfaces that result in increased user engagement, satisfaction, and overall application performance. Highlighting collaboration with product managers, designers, and cross-functional teams showcases the ability to work effectively in a team environment. 
-            </p>
-        </div>
-        
-    </section>
-    <section class="blogs">
-        <div class="blogs-img">
-            <img src="./blog3.png" alt="">
-        </div>
-        
-        <div class="blogs-text">
-            <p>
-                A strong UI Developer resume should emphasize the candidate's ability to design and develop user interfaces that result in increased user engagement, satisfaction, and overall application performance. Highlighting collaboration with product managers, designers, and cross-functional teams showcases the ability to work effectively in a team environment. 
-            </p>
-        </div>
-        
-    </section>
-    <section class="blogs">
-        <div class="blogs-img">
-            <img src="./blog4.png" alt="">
-        </div>
-        
-        <div class="blogs-text">
-            <p>
-                A strong UI Developer resume should emphasize the candidate's ability to design and develop user interfaces that result in increased user engagement, satisfaction, and overall application performance. Highlighting collaboration with product managers, designers, and cross-functional teams showcases the ability to work effectively in a team environment. 
-            </p>
-            
-        </div>
-        
-    </section>
-        <hr>
     </main>
+    <hr>
    <footer>
           <div class="social-links">
             <p> @2024 All right reserved. Developed By Cedro Group</p><br>
@@ -115,6 +66,42 @@
           
         </footer>
         <script>
+document.addEventListener("DOMContentLoaded", function () {
+  renderBlogs();
+  attachClickEventToButtons();
+});
+ function renderBlogs() {
+  const blogs = JSON.parse(localStorage.getItem("blogs")) || [];
+  const blogSectionMain = document.querySelector(".blogSectionmain");
+
+  blogs.forEach((blog, index) => {
+    const blogDiv = document.createElement("div");
+    blogDiv.classList.add("blogSection");
+    blogDiv.dataset.blogId = index; // Set a data attribute to store the blog id
+
+    blogDiv.innerHTML = `
+      <div class="blogpartOne">
+        <div class="h1">
+        <h1>Blog title:  <u> <span class="businessspanone">${blog.title}</span></u></h1>
+     </div>
+        <img src="${blog.image}" alt="">
+      </div>
+      <div class="blogpartTwo">
+        <p class="waitUntill">
+          <p class="until">${blog.description}</p>
+        </p>
+        <p class="blogP">
+          <span class="businessspantwo">${blog.date}</span>
+        </p>
+       
+      </div>
+      
+      `;
+
+    blogSectionMain.appendChild(blogDiv);
+  });
+}
+
             const toggleBtn = document.querySelector('.toggle_btn')
             const toggleBtnIcon = document.querySelector('.toggle_btn i')
             const dropDownMenu = document.querySelector('.dropdown_menu')

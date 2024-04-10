@@ -43,13 +43,14 @@
           <li><a href="./signin.html">sign in</a></li>
     
         </div>
-  </header>
+   </header>
   <main>
 
     <section class="Contact">
         <div class="contact-text">
             <h1>Contact  Me</h1>
-            <p>Microsoft Azure, formerly known as Windows Azure, is Microsoft's public cloud computing platform. It provides a ran .</p>
+            <p>Welcome dear, It's your right to ask any help about website and application Development . <br>
+           So, chat with us by copmleting the form on right side  </p>
             <h4>
               <a href="#"><i class="fa fa-envelope"></i></a>
                  iradukundasangwacedric@gmail.com <br>
@@ -65,13 +66,20 @@
             </div>
         </div>
         <div class="contact-form">
-            <form>
-                <input type="text" name="fname" placeholder="enter your names.." required>
-                <input type="text" name="email" placeholder="enter your email.." required>
-                <textarea name="message" id="" cols="45" rows="5" placeholder="enter your meassage.." required></textarea>
-                <button>Send Message</button>
-            </form>
-        </div>
+          <form id="form" action="#" onsubmit="return validateForm()">
+              <input id="fullname" type="text" name="fullname" placeholder="enter your name..">
+              <div id="fullnameError" class="error"></div>
+              <input id="phonenumber" type="text" name="phonenumber" placeholder="Tel:(+250 788224488)">
+              <div id="phonenumberError" class="error"></div>
+              <input id="emailAdress" type="text" name="emailAdress" placeholder="enter your email..">
+              <div id="emailadressError" class="error"></div>
+              <input id="subject" type="text" name="subject" placeholder="Title">
+              <div id="subjectError" class="error"></div>
+              <textarea id="message" name="message" cols="45" rows="5" placeholder="enter your message.."></textarea>
+              <div id="messageError" class="error"></div>
+              <button type="submit">Send Message</button>
+          </form>
+      </div>
     </section>
     <hr>
   </main>
@@ -91,12 +99,69 @@
           </div>
           <div class="subscribe">
               <p>Subscribe to our Articles To Get More..</p>
-              <input type="email" placeholder="Enter your email">
-              <button>Subscribe</button>
+              <input id="subscriptionEmail" type="text" placeholder="Enter your email">
+              <button class="subscribe" onclick="subscribeToNewsletter()">Subscribe</button>
+              <div id="subscriptionError" class="error"></div>
           </div>
           
         </footer>
-        <script>
+        <script src="./contact.js">
+       /* function validateForm() {
+    var username = document.getElementById('username').value.trim();
+    var email = document.getElementById('email').value.trim();
+    var message = document.getElementById('message').value.trim();
+    var valid = true;
+
+    document.getElementById('nameError').innerHTML = '';
+    document.getElementById('emailError').innerHTML = '';
+    document.getElementById('messageError').innerHTML = '';
+
+    if (username === '') {
+        document.getElementById('nameError').innerHTML = 'Please enter your name.';
+        valid = false;
+    }
+
+    if (email === '') {
+        document.getElementById('emailError').innerHTML = 'Please enter your email.';
+        valid = false;
+    } else if (!validateEmail(email)) {
+        document.getElementById('emailError').innerHTML = 'Please enter a valid email address.';
+        valid = false;
+    }
+
+    if (message === '') {
+        document.getElementById('messageError').innerHTML = 'Please enter your message.';
+        valid = false;
+    }
+
+    if (valid) {
+        var formData = {
+            username: username,
+            email: email,
+            message: message
+        };
+
+        // Retrieve existing messages from local storage or initialize as empty array
+        var messages = JSON.parse(localStorage.getItem('messages')) || [];
+        messages.push(formData);
+
+        // Save updated messages to local storage
+        localStorage.setItem('messages', JSON.stringify(messages));
+
+        // After storing the new message, populate the recent messages table
+        populateRecentMessages();
+    }
+
+    return false; // Prevent form submission
+}
+
+function validateEmail(email) {
+    var re = /\S+@\S+\.\S+/;
+    return re.test(email);
+}
+
+populateRecentMessages();
+
           const toggleBtn = document.querySelector('.toggle_btn')
           const toggleBtnIcon = document.querySelector('.toggle_btn i')
           const dropDownMenu = document.querySelector('.dropdown_menu')
@@ -108,7 +173,7 @@
             toggleBtnIcon.classList = isOpen
               ? 'fa-solid fa-xmark'
               : 'fa-solid fa-bars'
-          } 
+          } */
         </script>
 </body>
 </html>
