@@ -294,19 +294,19 @@ main .insights h3{
 
 /* recent message */
 
-main .recent_order{
+main .recent_message{
    margin-top: 1rem;
-   gap: 1rem;
+   gap: .5rem;
 }
 
- .recent_order h2{
+ .recent_message h2{
     color: var(--clr-dark);
 }
 
- .recent_order h2{
+ .recent_message h2{
   margin-bottom: 0.8rem;
 }
- .recent_order table{
+ .recent_message table{
   background: var(--clr-white);
   width: 100%;
   border-radius: var(--card-border-radius);
@@ -316,15 +316,18 @@ main .recent_order{
   transition: all .3s ease;
   color: var(--clr-dark);
 }
-.recent_order .table{
+.recent_message table{
+  width: 90%;
+}
+.recent_messages .table{
   width: 150%;
 }
- .recent_order table:hover{
+ .recent_message table:hover{
   box-shadow: none;
 }
-
- table tbody td{
+ table tbody th, tbody td {
    height: 2.5rem;
+   padding: 5px;
    border-bottom: 1px solid var(--clr-white);
    color:var(--clr-dark-variant)
 }
@@ -333,7 +336,7 @@ main .recent_order{
 }
 
 
-main .recent_order a{
+main .recent_message a{
   text-align: center;
   display: block;
   margin: 1rem;

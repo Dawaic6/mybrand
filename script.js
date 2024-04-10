@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", populateRecentMessages);
 function populateRecentMessages() {
     const messages = JSON.parse(localStorage.getItem("messages")) || [];
 
-    const tableBody = document.querySelector(".recent_order tbody");
+    const tableBody = document.querySelector(".recent_message tbody");
     tableBody.innerHTML = "";
     messages.forEach((message, index) => {
       const row = tableBody.insertRow();
@@ -63,7 +63,6 @@ function deleteMessage(index) {
   
     messages.splice(index, 1);
     localStorage.setItem("messages", JSON.stringify(messages));
-  
     // Fetch and populate the recent messages table with the updated data
     populateRecentMessages();
 }
@@ -78,7 +77,6 @@ function markMessage(index) {
     if (messageToUpdate) {
         messageToUpdate.seen = true;
         localStorage.setItem("messages", JSON.stringify(messages));
-
         populateRecentMessages();
   
         alert(`Message ${index + 1} marked as seen`);

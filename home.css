@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'inter';
+    
   }
   
   :root{
@@ -21,7 +22,8 @@
     background-color: var(--bg-color);
     color: var(--text-color);
     background-size: cover;
-  }
+      font-family: Arial, Helvetica, sans-serif;
+    }
   
   li{
     list-style: none;
@@ -305,6 +307,8 @@ font-family: Arial, Helvetica, sans-serif;
 
 /* style the container */
 .container {
+  margin-left: 4rem;
+  margin-right: 3rem;
   border-radius: 5px;
   background-color: #979591;
   padding: 20px 0 30px 0;
@@ -415,20 +419,16 @@ input[type=submit]:hover {
 
 /* bottom container */
 .bottom-container {
+  margin-left: 4rem;
+  margin-right: 3rem;
   text-align: center;
   background-color: #666;
   border-radius: 0px 0px 4px 4px;
 }
 /* sign up or register*/
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  color:black ;
-  margin-left: 2rem;
-  margin-right: 2rem;
-}
-
-* {
-  box-sizing: border-box;
+.signup{
+  margin-left: 4rem;
+  margin-right: 3rem;
 }
 
 /* Add padding to containers */
@@ -480,47 +480,8 @@ hr {
   text-align: center;
   color: white;
 }
-/*admin*/
-
-h1{
-  color: #21201E;
-}
-
-form {
-  margin-bottom: 20px;
-  color: #21201E;
-}
-
-input {
-  margin-right: 10px;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-th, td {
-  padding: 8px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-}
-
-th {
-  background-color: #a3a0a0;
-}
-
-button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 8px 16px;
-  border: none;
-  cursor: pointer;
-  text-align: center;
-}
-
-button:hover {
-  background-color: #45a049;
+.error{
+  color: red;
 }
 footer {
   display: flex;

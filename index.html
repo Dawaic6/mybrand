@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin</title>
+  <title>Admindashboard</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,0,0" >
   <link rel="stylesheet" href="style.css">
 </head>
@@ -116,47 +116,20 @@
 
         </div>
        <!-- end insights -->
-      <div class="recent_order">
+      <div class="recent_message">
 
                     <h2>Recent Messages</h2>
                     <table> 
                         <thead>
-                         <tr>
-                           <th>UserName</th>
-                           <th>Password</th>
-                           <th>Date</th>
-                           <th colspan="2">Action</th>
-                         </tr>
+                          <tr>
+                            <th>user id</th>
+                            <th>UserName</th>
+                            <th>Email</th>
+                            <th>message</th>
+                            <th colspan="2">Action</th>
+                                      </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                              <td>Cedric</td>
-                              <td>14563</td>
-                              <td>02/12/2024</td>
-                              <td class="warning"><button onclick="editRow(this)">Edit</button></td>
-                              <td class="primary"><button onclick="deleteRow(this)">Delete</button></td>
-                          </tr>
-                          <tr>
-                              <td>Eric</td>
-                              <td>12345</td>
-                              <td>02/12/2024</td>
-                              <td class="warning"><button onclick="editRow(this)">Edit</button></td>
-                              <td class="primary"><button onclick="deleteRow(this)">Delete</button></td>
-                          </tr>
-                          <tr>
-                              <td>Manzi</td>
-                              <td>54321</td>
-                              <td>02/23/2024</td>
-                              <td class="warning"><button onclick="editRow(this)">Edit</button></td>
-                              <td class="primary"><button onclick="deleteRow(this)">Delete</button></td>
-                          </tr>
-                          <tr>
-                              <td>Devin</td>
-                              <td>00000</td>
-                              <td>02/14/2024</td>
-                              <td class="warning"><button onclick="editRow(this)">Edit</button></td>
-                              <td class="primary"><button onclick="deleteRow(this)">Delete</button></td>
-                          </tr>
                       </tbody>
                     </table>
       </div>
@@ -175,7 +148,6 @@
    <button id="menu_bar">
      <span class="material-symbols-sharp">menu</span>
    </button>
-
    <div class="theme-toggler">
      <span class="material-symbols-sharp active">light_mode</span>
      <span class="material-symbols-sharp">dark_mode</span>

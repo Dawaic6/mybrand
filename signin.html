@@ -39,7 +39,7 @@
   </header>
  
 <div class="container">
-  <form onsubmit="return validate()" action="./home.html">
+  <form id="form" onsubmit="return validate()" action="./home.html">
     <div class="row">
       <h1 style="text-align:center">Login With </h1>
       <div class="vl">
@@ -61,11 +61,10 @@
         <div class="hide-md-lg">
           <p>Or sign in manually:</p>
         </div>
-        <p id="validationMessage" style="color: rgba(255, 0, 0, 0.87);font-size: 1.5rem;"></p>
         <input id="username" type="text" name="username" placeholder="Username" >
-        <div class="error"></div>
+        <div id="username_error" class="error"></div>
         <input id="password" type="password" name="password" placeholder="Password" >
-        <div class="error"></div>
+        <div id="password_error" class="error"></div>
         <input type="submit" value="Login">
       </div>
       
@@ -108,65 +107,23 @@
         </footer>
         <script>
           function validate(){
-          var username = document.getElementById("username");
-          var password = document.getElementById("password");
+          var username = document.getElementById("username").value.trim();
+          var password = document.getElementById("password").value.trim();
+          var valid=true; 
 
-          if(username.value.trim() =="" || password.value ==""){
-            document.getElementById('validationMessage').innerText = "Username or Password is incorrect try again";
-            return false
-          }
-          else{
-            return true
-          }
-          }
-          
-      /*   
-    const username = document.getElementById("username");
-    const password = document.getElementById("password");
-
-form.addEventListener('submit', e => {
-    e.precentDefault();
-
-    validateInputs();
-});
-
-const setError = (element, message) =>{
-    const inputControl = element.parentElement;
-    const errorDisplay = inputControl.querySelector('.error');
-
-    errorDisplay.innerText = message;
-    inputControl.classList.add('error');
-    inputControl.classList.remove('success')
-}
-const setSuccess = element => {
-    const inputControl = element.parentElement;
-    const errorDisplay = inputControl.querySelector('.error');
-
-    errorDisplay.innerText = '';
-    inputControl.classList.add('success');
-    inputControl.classList.remove('error')
+          document.getElementById('username_error').innerHTML = '';
+          document.getElementById('password_error').innerHTML = '';
+          if (username === '') {
+        document.getElementById('username_error').innerHTML = 'Please enter your Username.';
+        valid = false;
+    }
+    if (password === '') {
+        document.getElementById('password_error').innerHTML = 'Please enter your password.';
+        valid = false;
+    } 
+    return false; // Prevent form submission
 }
 
-const validateInputs =() =>{
-    const usernameValue = username.value.trim();
-    const passwordValue = password.value;
-};
-
-    if(username.value === ''){
-    setError(username, 'username is required')
-    }
-    else{
-    setSuccess(username)
-    }
-    if(password.value === ''){
-        setError(password, 'password is required')
-        }
-        if(password.length < 10){
-            setError(password.'password must be at least 10 characters.')
-        }
-        else{
-        setSuccess(password)
-        }*/
           const toggleBtn = document.querySelector('.toggle_btn')
           const toggleBtnIcon = document.querySelector('.toggle_btn i')
           const dropDownMenu = document.querySelector('.dropdown_menu')

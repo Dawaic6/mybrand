@@ -43,7 +43,7 @@
           <li><a href="./signin.html">sign in</a></li>
     
         </div>
-  </header>
+   </header>
   <main>
 
     <section class="Contact">
@@ -67,10 +67,14 @@
         </div>
         <div class="contact-form">
           <form id="form" action="#" onsubmit="return validateForm()">
-              <input id="username" type="text" name="fname" placeholder="enter your name..">
-              <div id="nameError" class="error"></div>
-              <input id="email" type="text" name="email" placeholder="enter your email..">
-              <div id="emailError" class="error"></div>
+              <input id="fullname" type="text" name="fullname" placeholder="enter your name..">
+              <div id="fullnameError" class="error"></div>
+              <input id="phonenumber" type="text" name="phonenumber" placeholder="Tel:(+250 788224488)">
+              <div id="phonenumberError" class="error"></div>
+              <input id="emailAdress" type="text" name="emailAdress" placeholder="enter your email..">
+              <div id="emailadressError" class="error"></div>
+              <input id="subject" type="text" name="subject" placeholder="Title">
+              <div id="subjectError" class="error"></div>
               <textarea id="message" name="message" cols="45" rows="5" placeholder="enter your message.."></textarea>
               <div id="messageError" class="error"></div>
               <button type="submit">Send Message</button>
@@ -95,13 +99,14 @@
           </div>
           <div class="subscribe">
               <p>Subscribe to our Articles To Get More..</p>
-              <input type="email" placeholder="Enter your email">
-              <button>Subscribe</button>
+              <input id="subscriptionEmail" type="text" placeholder="Enter your email">
+              <button class="subscribe" onclick="subscribeToNewsletter()">Subscribe</button>
+              <div id="subscriptionError" class="error"></div>
           </div>
           
         </footer>
-        <script>
-        function validateForm() {
+        <script src="./contact.js">
+       /* function validateForm() {
     var username = document.getElementById('username').value.trim();
     var email = document.getElementById('email').value.trim();
     var message = document.getElementById('message').value.trim();
@@ -168,7 +173,7 @@ populateRecentMessages();
             toggleBtnIcon.classList = isOpen
               ? 'fa-solid fa-xmark'
               : 'fa-solid fa-bars'
-          } 
+          } */
         </script>
 </body>
 </html>
