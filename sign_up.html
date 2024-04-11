@@ -89,12 +89,26 @@
           
         </footer>
         <script>
-          function validate(){
-          var username = document.getElementById("Username");
-          var password = document.getElementById("psw");
-          var Repeat_password = document.getElementById("psw-repeat");
+        async  function validate(){
+          var username = document.getElementById("Username").value;
+          var password = document.getElementById("psw").value;
+          var Repeat_password = document.getElementById("psw-repeat").value;
           var valid= true;
-
+         console.log(username,password,Repeat_password);
+         try {
+          const response = await fetch("https://mybrand-backend-bjy7.onrender.com/api/v1/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ email, password })
+    });
+    const data = await response.json();
+    console.log(data);
+         } catch (error) {
+          
+         } }
+/*
           document.getElementById('Username_error').innerHTML = '';
           document.getElementById('psw_error').innerHTML = '';
           document.getElementById('psw-repeat_error').innerHTML = '';
@@ -129,6 +143,7 @@
               ? 'fa-solid fa-xmark'
               : 'fa-solid fa-bars'
           } 
+          */
         </script>
 </body>
 </html>

@@ -77,7 +77,7 @@
               <div id="subjectError" class="error"></div>
               <textarea id="message" name="message" cols="45" rows="5" placeholder="enter your message.."></textarea>
               <div id="messageError" class="error"></div>
-              <button type="submit">Send Message</button>
+              <button class="sendMessage" onclick="contactValidation()">Send Message</button>
           </form>
       </div>
     </section>
@@ -105,61 +105,213 @@
           </div>
           
         </footer>
-        <script src="./contact.js">
-       /* function validateForm() {
-    var username = document.getElementById('username').value.trim();
-    var email = document.getElementById('email').value.trim();
-    var message = document.getElementById('message').value.trim();
-    var valid = true;
+      <script>
+   // Frontend JavaScript code
+let openHam = document.querySelector("#openHam");
+let closeHam = document.querySelector("#closeHam");
+let navigationItems = document.querySelector("#navigation-items");
 
-    document.getElementById('nameError').innerHTML = '';
-    document.getElementById('emailError').innerHTML = '';
-    document.getElementById('messageError').innerHTML = '';
+const hamburgerEvent = (navigation, close, open) => {
+  navigationItems.style.display = navigation;
+  closeHam.style.display = close;
+  openHam.style.display = open;
+};
 
-    if (username === '') {
-        document.getElementById('nameError').innerHTML = 'Please enter your name.';
-        valid = false;
-    }
-
-    if (email === '') {
-        document.getElementById('emailError').innerHTML = 'Please enter your email.';
-        valid = false;
-    } else if (!validateEmail(email)) {
-        document.getElementById('emailError').innerHTML = 'Please enter a valid email address.';
-        valid = false;
-    }
-
-    if (message === '') {
-        document.getElementById('messageError').innerHTML = 'Please enter your message.';
-        valid = false;
-    }
-
-    if (valid) {
-        var formData = {
-            username: username,
-            email: email,
-            message: message
-        };
-
-        // Retrieve existing messages from local storage or initialize as empty array
-        var messages = JSON.parse(localStorage.getItem('messages')) || [];
-        messages.push(formData);
-
-        // Save updated messages to local storage
-        localStorage.setItem('messages', JSON.stringify(messages));
-
-        // After storing the new message, populate the recent messages table
-        populateRecentMessages();
-    }
-
-    return false; // Prevent form submission
+openHam.addEventListener("click", () =>
+  hamburgerEvent("flex", "block", "none")
+);
+closeHam.addEventListener("click", () =>
+  hamburgerEvent("none", "none", "block")
+);
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
 }
 
-function validateEmail(email) {
-    var re = /\S+@\S+\.\S+/;
-    return re.test(email);
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
 }
 
+document.addEventListener("DOMContentLoaded", function () {
+
+});
+
+function contactValidation() {
+    const fullname = document.getElementById("fullname");
+    const emailAdress = document.getElementById("emailAdress");
+    const phoneNumber = document.getElementById("phoneNumber");
+    const subject = document.getElementById("subject");
+    const message = document.getElementById("message");
+  
+    const errors = [];
+    if (!fullname || fullname.value.trim() === "") {
+      errors.push("username is Required");
+    }
+    if (!emailAdress || emailAdress.value.trim() === "") {
+      errors.push("Email Address is Required");
+    }
+    if (!phoneNumber || phoneNumber.value.trim() === "") {
+      errors.push("Phone Number is Required");
+    }
+    if (!subject || subject.value.trim() === "") {
+      errors.push("Subject is Required");
+    }
+    if (!message || message.value.trim() === "") {
+      errors.push("Message is Required");
+    }
+  
+    document.getElementById("fullnameError").textContent = errors.includes(
+      "userme is Required"
+    )
+      ? "username is Required"
+      : "";
+  
+    document.getElementById("emailadressError").textContent = errors.includes(
+      "Email Address is Required"
+    )
+      ? "Email Address is Required"
+      : "";
+  
+    document.getElementById("phonenumberError").textContent = errors.includes(
+      "Phone Number is Required"
+    )
+      ? "Phone Number is Required"
+      : "";
+  
+    document.getElementById("subjectError").textContent = errors.includes(
+      "Subject is Required"
+    )
+      ? "Subject is Required"
+      : "";
+    document.getElementById("messageError").textContent = errors.includes(
+      "Message is Required"
+    )
+      ? "Message is Required"
+      : "";
+  
+    // Check if there are any validation errors and return if true
+    if (errors.length > 0) {
+      return false;
+    }
+  
+    // Call the function to store contact data
+    storeContactUs(
+      fullName.value,
+      phoneNumber.value,
+      emailAdress.value,
+      subject.value,
+      message.value
+    );
+  }
+  
+  async function storeContactUs(
+    fullName,
+    phoneNumber,
+    emailAdress,
+    subject,
+    message
+  ) {
+  
+  const response = await fetch(
+    "http://localhost:5000/api/v1/post-contact-message",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        fullName: fullName,
+        phoneNumber: phoneNumber,
+        emailAddress: emailAdress,
+        subject: subject,
+        message: message,
+      }),
+    }
+  );
+
+  const responseData = await response.json();
+
+  if (!response.ok) {
+    throw new Error(responseData.error || "Failed to save contact information");
+  }
+
+  alert("Contact information saved successfully!");
+  resetModalForm();
+}
+
+function resetModalForm() {
+  document.getElementById("fullName").value = "";
+  document.getElementById("emailAdress").value = "";
+  document.getElementById("phoneNumber").value = "";
+  document.getElementById("subject").value = "";
+  document.getElementById("message").value = "";
+}
+
+fullName.addEventListener("input", () => clearError("fullnameError"));
+phoneNumber.addEventListener("input", () => clearError("phonenumberError"));
+emailAdress.addEventListener("input", () => clearError("emailadressError"));
+subject.addEventListener("input", () => clearError("subjectError"));
+message.addEventListener("input", () => clearError("messageError"));
+
+function clearError(errorId) {
+  document.getElementById(errorId).textContent = "";
+}
+
+// Function to subscribe to newsletter
+function subscribeToNewsletter() {
+  const emailInput = document.getElementById("subscriptionEmail");
+  const subscriptionError = document.getElementById("subscriptionError");
+
+  const email = emailInput.value.trim();
+
+  // Validate email format
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    if (subscriptionError)
+      subscriptionError.textContent = "Invalid email format";
+    return false;
+  }
+
+  // Call the subscribe function with the email
+  subscribe(email);
+}
+
+// Function to handle subscription
+function subscribe(email) {
+  fetch("https://mybrand-backend-bjy7.onrender.com/api-docs/#/Subscribe/post-subscribe", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email }),
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Failed to subscribe");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      if (data.success) {
+        // Clear input field and display success message
+        const emailInput = document.getElementById("subscriptionEmail");
+        if (emailInput) emailInput.value = "";
+        alert("Thank you for subscribing to the newsletter!");
+      } else {
+        // Check if subscription failed due to email already being subscribed
+        if (data.error === "Email already subscribed") {
+          // Display appropriate error message
+          alert("This email is already subscribed!");
+        } else {
+          // Display generic error message for other errors
+          alert(data.message || "This email is already subscribed!");
+        }
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error.message);
+      alert("This email is already subscribed!");
+    });
+}
 populateRecentMessages();
 
           const toggleBtn = document.querySelector('.toggle_btn')
@@ -173,7 +325,7 @@ populateRecentMessages();
             toggleBtnIcon.classList = isOpen
               ? 'fa-solid fa-xmark'
               : 'fa-solid fa-bars'
-          } */
-        </script>
+          } 
+          </script>
 </body>
 </html>
