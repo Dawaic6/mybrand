@@ -1,141 +1,167 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./home.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./home.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
-    <header>
-      <div class="navbar">
-        <div class="logo"><img src="./logo.jpg" alt="">
-        </div>
-        <ul class="links">
-          <li><a href="./home.html">Home</a></li>
-          <li><a href="./About.html">About</a></li>
-          <li><a href="./contactform.html">Contact</a></li>
-          <li><a href="./portfolio.html">portfolio</a></li>
-          <li><a href="./blogs.html">blogs</a></li>
-          <li><a href="./#">sign in</a></li>
-          <a href="./index.html"><i class="fa fa-user-circle" aria-hidden="true" style="color: white; font-size: 35px;margin-top: 1rem;"></i></a>
-        </ul>
-         <div class="toggle_btn">
-          <i class="fa fa-bars"></i>
-        </div>
-        <div class="dropdown_menu">
-          <li><a href="./home.html">Home</a></li>
-          <li><a href="./About.html">About</a></li>
-          <li><a href="./contactform.html">Contact</a></li>
-          <li><a href="./portfolio.html">portfolio</a></li>
-          <li><a href="./blogs.html">blogs</a></li>
-          <li><a href="./#">sign in</a></li>
-         <a href="./index.html"><i class="fa fa-user-circle" aria-hidden="true" style="color: white; font-size: 35px;margin-top: 1rem;"></i></a>
-        </div>
+  <header>
+    <div class="navbar">
+      <div class="logo"><img src="./logo.jpg" alt="">
+      </div>
+      <ul class="links">
+        <li><a href="./home.html">Home</a></li>
+        <li><a href="./About.html">About</a></li>
+        <li><a href="./contactform.html">Contact</a></li>
+        <li><a href="./portfolio.html">portfolio</a></li>
+        <li><a href="./blogs.html">blogs</a></li>
+        <li><a href="./#">sign in</a></li>
+        <a href="./index.html"><i class="fa fa-user-circle" aria-hidden="true"
+            style="color: white; font-size: 35px;margin-top: 1rem;"></i></a>
+      </ul>
+      <div class="toggle_btn">
+        <i class="fa fa-bars"></i>
+      </div>
+      <div class="dropdown_menu">
+        <li><a href="./home.html">Home</a></li>
+        <li><a href="./About.html">About</a></li>
+        <li><a href="./contactform.html">Contact</a></li>
+        <li><a href="./portfolio.html">portfolio</a></li>
+        <li><a href="./blogs.html">blogs</a></li>
+        <li><a href="./#">sign in</a></li>
+        <a href="./index.html"><i class="fa fa-user-circle" aria-hidden="true"
+            style="color: white; font-size: 35px;margin-top: 1rem;"></i></a>
+      </div>
   </header>
- 
-<div class="container">
-  <form id="form" onsubmit="return validate()" action="./home.html">
-    <div class="row">
-      <h1 style="text-align:center">Login With </h1>
-      <div class="vl">
-        <span class="vl-innertext">OR</span>
-      </div>
 
-      <div class="col">
-        <a href="#" class="fb btn">
-          <i class="fa fa-facebook fa-fw"></i> Login with Facebook
-         </a>
-        <a href="#" class="twitter btn">
-          <i class="fa fa-twitter fa-fw"></i> Login with Twitter
-        </a>
-        <a href="#" class="google btn"><i class="fa fa-google fa-fw">
-          </i> Login with Google+
-        </a>
-      </div>
-      <div class="col">
-        <div class="hide-md-lg">
-          <p>Or sign in manually:</p>
+  <div class="container">
+    <form id="form" onsubmit="validate(event)">
+      <div class="row">
+        <h1 style="text-align:center">Login With </h1>
+        <div class="vl">
+          <span class="vl-innertext">OR</span>
         </div>
-        <input id="username" type="text" name="username" placeholder="Username" >
-        <div id="username_error" class="error"></div>
-        <input id="password" type="password" name="password" placeholder="Password" >
-        <div id="password_error" class="error"></div>
-        <input type="submit" value="Login">
+
+        <div class="col">
+          <a href="#" class="fb btn">
+            <i class="fa fa-facebook fa-fw"></i> Login with Facebook
+          </a>
+          <a href="#" class="twitter btn">
+            <i class="fa fa-twitter fa-fw"></i> Login with Twitter
+          </a>
+          <a href="#" class="google btn"><i class="fa fa-google fa-fw">
+            </i> Login with Google+
+          </a>
+        </div>
+        <div class="col">
+          <div class="hide-md-lg">
+            <p>Or sign in manually:</p>
+          </div>
+          <input id="username" type="text" name="username" placeholder="Username">
+          <div id="username_error" class="error"></div>
+          <input id="password" type="password" name="password" placeholder="Password">
+          <div id="password_error" class="error"></div>
+          <input type="submit" value="Login">
+        </div>
+
       </div>
-      
-    </div>
-  </form>
-</div>
-<div class="bottom-container">
-  <div class="row">
-    <div class="col">
-      <a href="./sign_up.html" style="color:white" class="btn" >Sign up</a>
-    </div>
-    <div class="col">
-      <a href="./sign_up.html" style="color:white" class="btn">Forgot password?</a>
+    </form>
+  </div>
+  <div class="bottom-container">
+    <div class="row">
+      <div class="col">
+        <a href="./sign_up.html" style="color:white" class="btn">Sign up</a>
+      </div>
+      <div class="col">
+        <a href="./sign_up.html" style="color:white" class="btn">Forgot password?</a>
+      </div>
     </div>
   </div>
-</div>
-<hr style="margin-top: 1rem;">
-   <footer>
-          <div class="social-links">
-            <p> @2024 All right reserved. Developed By Cedro Group</p><br>
-            <p>Chat with Us</p>
-             <p>
-             Tel: (+250)782446577 
-              </p>
-            </div>
-          <div class="copyright">
-            <p>
-              Kigali, Rwanda &copy; 2024 All rights reserved. <br>
-              Web Development |UI/UX Design | Virtual assistance 
-            </p>
-          </div>
-          <div class="subscribe">
-              <p>Subscribe to our Articles To Get More..</p>
-              <form action="">
-              <input type="email" placeholder="Enter your email" required>
-              <button>Subscribe</button>
-              </form>
-          </div>
-          
-        </footer>
-        <script>
-          function validate(){
-          var username = document.getElementById("username").value.trim();
-          var password = document.getElementById("password").value.trim();
-          var valid=true; 
+  <hr style="margin-top: 1rem;">
+  <footer>
+    <div class="social-links">
+      <p> @2024 All right reserved. Developed By Cedro Group</p><br>
+      <p>Chat with Us</p>
+      <p>
+        Tel: (+250)782446577
+      </p>
+    </div>
+    <div class="copyright">
+      <p>
+        Kigali, Rwanda &copy; 2024 All rights reserved. <br>
+        Web Development |UI/UX Design | Virtual assistance
+      </p>
+    </div>
+    <div class="subscribe">
+      <p>Subscribe to our Articles To Get More..</p>
+      <form action="">
+        <input type="email" placeholder="Enter your email" required>
+        <button>Subscribe</button>
+      </form>
+    </div>
 
-          document.getElementById('username_error').innerHTML = '';
-          document.getElementById('password_error').innerHTML = '';
-          if (username === '') {
-        document.getElementById('username_error').innerHTML = 'Please enter your Username.';
-        valid = false;
+  </footer>
+  <script>
+    async function validate(event) {
+      event.preventDefault();
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            var valid=true; 
+            try {
+            const response = await fetch("http://localhost:5000/api/v1/signin", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ email:username, password })
+      });
+      const data = await response.json();
+      localStorage.setItem('token',response.token)
+      console.log(data);
+      if(response.ok){
+         window.location.href="./index.html"
+      }else{
+        alert("Invalid credentials")
+      }
+
+           } catch (error) {
+
+           } 
     }
-    if (password === '') {
-        document.getElementById('password_error').innerHTML = 'Please enter your password.';
-        valid = false;
-    } 
-    return false; // Prevent form submission
-}
 
-          const toggleBtn = document.querySelector('.toggle_btn')
-          const toggleBtnIcon = document.querySelector('.toggle_btn i')
-          const dropDownMenu = document.querySelector('.dropdown_menu')
-      
-          toggleBtn.onclick = function () {
-            dropDownMenu.classList.toggle('open')
-            const isOpen = dropDownMenu.classList.contains('open')
-      
-            toggleBtnIcon.classList = isOpen
-              ? 'fa-solid fa-xmark'
-              : 'fa-solid fa-bars'
-          } 
-        </script>
+    /*
+              document.getElementById('username_error').innerHTML = '';
+              document.getElementById('password_error').innerHTML = '';
+              if (username === '') {
+            document.getElementById('username_error').innerHTML = 'Please enter your Username.';
+            valid = false;
+        }
+        if (password === '') {
+            document.getElementById('password_error').innerHTML = 'Please enter your password.';
+            valid = false;
+        } 
+        return false; // Prevent form submission
+    }
+
+              const toggleBtn = document.querySelector('.toggle_btn')
+              const toggleBtnIcon = document.querySelector('.toggle_btn i')
+              const dropDownMenu = document.querySelector('.dropdown_menu')
+          
+              toggleBtn.onclick = function () {
+                dropDownMenu.classList.toggle('open')
+                const isOpen = dropDownMenu.classList.contains('open')
+          
+                toggleBtnIcon.classList = isOpen
+                  ? 'fa-solid fa-xmark'
+                  : 'fa-solid fa-bars'
+              } 
+              */
+  </script>
 </body>
+
 </html>

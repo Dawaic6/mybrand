@@ -25,8 +25,6 @@ function closeForm() {
 
 document.addEventListener("DOMContentLoaded", function () {
 
-  // Get the subscription email input element
-  const subscriptionEmailInput = document.getElementById("subscriptionEmail");
 });
 
 function contactValidation() {

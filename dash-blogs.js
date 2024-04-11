@@ -165,18 +165,32 @@ function validateBlogForm() {
   }
   
   // Function to fetch and populate the table with blog data
-  function fetchAndPopulateTable() {
-    // Retrieve blog data from local storage
-    const blogData = JSON.parse(localStorage.getItem("blogs")) || [];
-  
-    // Get the table body
-    const tableBody = document.querySelector(".tbl tbody");
-  
-    // Clear existing rows in the table
-    tableBody.innerHTML = "";
-  
-    // Iterate through blog data and append rows to the table
-    blogData.forEach((blog, index) => {
+
+function fetchAndPopulateTable() {
+  console.log("Blogs..............")
+  const token = localStorage.getItem('token')
+  fetch('http://localhost:5000/api/v1/getall-blog',{
+    headers:{"Authorization": `Bearer ${token}`}
+  }).then(response => {
+    if (!response.ok) {
+      throw new Error("Failed to fetch blogs");
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log(data); // Log the structure of the data object
+    if (!Array.isArray(data.blogList)) {
+        throw new Error("Invalid data format: blogList is not an array");
+    }
+    // Populate the table with the fetched data
+    populateTable(data.blogList);
+})
+
+  .then(data => {
+    console.log(data)
+    const blogList = document.querySelector(".tbl tbody");
+    blogList.innerHTML =  ""
+    blogList.forEach((blog, index) => {
       const row = tableBody.insertRow();
       row.innerHTML = `
      <td data-table="Blog Id">${index + 1}</td>
@@ -190,7 +204,34 @@ function validateBlogForm() {
      </td>
     `;
     });
-  }
+  })
+
+}
+
+    // Retrieve blog data from local storage
+    // const blogData = JSON.parse(localStorage.getItem("blogs")) || [];
+    // // Get the table body
+    // const tableBody = document.querySelector(".tbl tbody");
+  
+    // // Clear existing rows in the table
+    // tableBody.innerHTML = "";
+  
+    // // Iterate through blog data and append rows to the table
+    // blogData.forEach((blog, index) => {
+    //   const row = tableBody.insertRow();
+    //   row.innerHTML = `
+    //  <td data-table="Blog Id">${index + 1}</td>
+    //  <td data-table="Blog Title">${blog.title}</td>
+    //  <td data-table="Image"><img src="${blog.image}" alt="blog Image"></td>
+    //  <td data-table="Description">${blog.description}</td>
+    //  <td data-table="Date Created">${blog.date}</td>
+    //  <td>
+    //  <button class="btn_edit" data-table="Edit" onclick="editBlog(${index})">Edit</button>
+    //   <button class="btn_trash" data-table="Delete" onclick="deleteBlog(${index})">Delete</button>
+    //  </td>
+    // `;
+    // });
+  
   
   // Add an event listener to fetch and populate the table on page load
   document.addEventListener("DOMContentLoaded", fetchAndPopulateTable);
