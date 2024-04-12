@@ -167,9 +167,8 @@ function validateBlogForm() {
   // Function to fetch and populate the table with blog data
 
 function fetchAndPopulateTable() {
-  console.log("Blogs..............")
   const token = localStorage.getItem('token')
-  fetch('http://localhost:5000/api/v1/getall-blog',{
+  fetch('https://mybrand-backend-bjy7.onrender.com/api/v1/getall-blog',{
     headers:{"Authorization": `Bearer ${token}`}
   }).then(response => {
     if (!response.ok) {
@@ -178,29 +177,21 @@ function fetchAndPopulateTable() {
     return response.json();
   })
   .then(data => {
-    console.log(data); // Log the structure of the data object
-    if (!Array.isArray(data.blogList)) {
-        throw new Error("Invalid data format: blogList is not an array");
-    }
-    // Populate the table with the fetched data
-    populateTable(data.blogList);
-})
-
-  .then(data => {
-    console.log(data)
-    const blogList = document.querySelector(".tbl tbody");
-    blogList.innerHTML =  ""
-    blogList.forEach((blog, index) => {
+    console.log(data.data)
+    const tableBody = document.querySelector(".tbl tbody");
+    tableBody.innerHTML = ""
+    data.data.forEach((blog, index) => {
       const row = tableBody.insertRow();
       row.innerHTML = `
      <td data-table="Blog Id">${index + 1}</td>
-     <td data-table="Blog Title">${blog.title}</td>
-     <td data-table="Image"><img src="${blog.image}" alt="blog Image"></td>
-     <td data-table="Description">${blog.description}</td>
-     <td data-table="Date Created">${blog.date}</td>
+     <td data-table="Blog Title">${blog.blogTitle}</td>
+     <td data-table="Image"><img src="${blog.blogImage
+      }" alt="blog Image"></td>
+     <td data-table="Description">${blog.blogDescription}</td>
+     <td data-table="Date Created">${blog.blogDate}</td>
      <td>
-     <button class="btn_edit" data-table="Edit" onclick="editBlog(${index})">Edit</button>
-      <button class="btn_trash" data-table="Delete" onclick="deleteBlog(${index})">Delete</button>
+     <button class="btn_edit" data-table="Edit" onclick="editBlog('${blog._id}')">Edit</button>
+     <button class="btn_trash" data-table="Delete" onclick="deleteBlog('${blog._id}')">Delete</button>
      </td>
     `;
     });
@@ -208,7 +199,7 @@ function fetchAndPopulateTable() {
 
 }
 
-    // Retrieve blog data from local storage
+    // // Retrieve blog data from local storage
     // const blogData = JSON.parse(localStorage.getItem("blogs")) || [];
     // // Get the table body
     // const tableBody = document.querySelector(".tbl tbody");
@@ -236,34 +227,66 @@ function fetchAndPopulateTable() {
   // Add an event listener to fetch and populate the table on page load
   document.addEventListener("DOMContentLoaded", fetchAndPopulateTable);
   
+  // function deleteBlog(index) {
+  //   console.log(index);
+  //   let existingBlogs = JSON.parse(localStorage.getItem("blogs")) || [];
+  //   existingBlogs.splice(index, 1);
+  //   localStorage.setItem("blogs", JSON.stringify(existingBlogs));
+  //   // fetchAndPopulateTable();
+  // }
   function deleteBlog(index) {
-    let existingBlogs = JSON.parse(localStorage.getItem("blogs")) || [];
-    existingBlogs.splice(index, 1);
-    localStorage.setItem("blogs", JSON.stringify(existingBlogs));
-    fetchAndPopulateTable();
+    const token = localStorage.getItem('token');
+    console.log('token');
+    // let existingBlogs = JSON.parse(localStorage.getItem("blogs")) || [];
+    // const blogId = existingBlogs[index].id; // Assuming each blog object has an "id" property
+    const url = `https://mybrand-backend-bjy7.onrender.com/api/v1/delete-blog/${index}`;
+  
+    fetch(url, {
+      headers: {
+        "Authorization": `Bearer ${token}`
+      },
+      method: 'DELETE'
+    })
+    .then(response => {
+      if (response.ok) {
+        alert('Blog deleted successfully');
+      } else {
+        console.error('Failed to delete blog.');
+      }
+    })
+    .catch(error => {
+      console.error('Error occurred while deleting blog:', error);
+    });
   }
-  function editBlog(index) {
-    // Retrieve existing blog data from local storage
-    let existingBlogs = JSON.parse(localStorage.getItem("blogs")) || [];
-
-    // Get the blog data based on the clicked row
-    const blogToEdit = existingBlogs[index];
-
-    // Populate the form with the data for editing
-    imageInput.value = ""; 
-    dateInput.value = blogToEdit.date;
-    blogTitleInput.value = blogToEdit.title;
-    descriptionInput.value = blogToEdit.description;
-
-    // Set the index of the blog being edited
-    document.getElementById("editedBlogIndex").value = index;
-
-    // Change the button text to "Update"
-    document.getElementById("submit").textContent = "Update";
-
-    // Open the modal for editing
-    openBlogModal();
+  
+  function removeAllFromLocalStorage() {
+    localStorage.clear();
   }
+  
+
+  // function editBlog(index) {
+  //   console.log(index)
+  //   // Retrieve existing blog data from local storage
+  //   let existingBlogs = JSON.parse(localStorage.getItem("blogs")) || [];
+
+  //   // Get the blog data based on the clicked row
+  //   const blogToEdit = existingBlogs[index];
+
+  //   // Populate the form with the data for editing
+  //   imageInput.value = ""; 
+  //   dateInput.value = blogToEdit.date;
+  //   blogTitleInput.value = blogToEdit.title;
+  //   descriptionInput.value = blogToEdit.description;
+
+  //   // Set the index of the blog being edited
+  //   document.getElementById("editedBlogIndex").value = index;
+
+  //   // Change the button text to "Update"
+  //   document.getElementById("submit").textContent = "Update";
+
+  //   // Open the modal for editing
+  //   openBlogModal();
+  // }
 
   // Function to update or add blog data in local storage
   function validateBlogForm() {
@@ -312,30 +335,114 @@ function fetchAndPopulateTable() {
     reader.readAsDataURL(imageInput.files[0]);
   }
 
-  // Function to add new blog data in local storage
-  function addBlogData() {
-    // Read the image file using FileReader
-    const reader = new FileReader();
-
-    reader.onload = function (e) {
-      // e.target.result contains the base64-encoded image data
-      const imageData = e.target.result;
-
-      // If all fields are valid, proceed to store data in local storage
-      storeBlogData(
-        imageData,
-        dateInput.value,
-        blogTitleInput.value,
-        descriptionInput.value
-      );
-
-      // Close the modal after successful validation and storage
-      closeModal();
-    };
-
-    // Read the image file asDataURL
-    reader.readAsDataURL(imageInput.files[0]);
+  // function deleteBlog(index) {
+  //   let existingBlogs = JSON.parse(localStorage.getItem("blogs")) || [];
+  //   existingBlogs.splice(index, 1);
+  //   localStorage.setItem("blogs", JSON.stringify(existingBlogs));
+  //   fetchAndPopulateTable();
+  // }
+  
+  // function editBlog(index) {
+  //   let existingBlogs = JSON.parse(localStorage.getItem("blogs")) || [];
+  //   const blogToEdit = existingBlogs[index];
+  
+  //   imageInput.value = ""; 
+  //   dateInput.value = blogToEdit.date;
+  //   blogTitleInput.value = blogToEdit.title;
+  //   descriptionInput.value = blogToEdit.description;
+  
+  //   document.getElementById("editedBlogIndex").value = index;
+  //   document.getElementById("submit").textContent = "Update";
+  //   openBlogModal();
+  // }
+  
+  // function validateBlogForm() {
+  //   const index = document.getElementById("editedBlogIndex").value;
+  
+  //   if (index !== "") {
+  //     updateBlogData(index);
+  //   } else {
+  //     addBlogData();
+  //   }
+  // }
+  
+  function editBlog(index) {
+    const token = localStorage.getItem('token');
+    const formData = new FormData();
+    formData.append('blogDate', dateInput.value);
+    formData.append('blogTitle', blogTitleInput.value);
+    formData.append('blogDescription', descriptionInput.value);
+  
+    fetch(`https://mybrand-backend-bjy7.onrender.com/api/v1/update-blog/${index}`, {
+      headers: { "Authorization": `Bearer ${token}` },
+      method: 'PUT',
+      body: formData
+    })
+    .then(response => {
+      if (response.ok) {
+        resetForm();
+        fetchAndPopulateTable();
+        alert('Blog updated successfully');
+      } else {
+        console.error('Failed to update blog data.');
+      }
+    })
+    .catch(error => {
+      console.error('Error occurred while updating blog data:', error);
+    });
   }
+  
+
+  // Function to add new blog data in local storage
+  // function addBlogData() {
+  //   // Read the image file using FileReader
+  //   const reader = new FileReader();
+
+  //   reader.onload = function (e) {
+  //     // e.target.result contains the base64-encoded image data
+  //     const imageData = e.target.result;
+
+  //     // If all fields are valid, proceed to store data in local storage
+  //     storeBlogData(
+  //       imageData,
+  //       dateInput.value,
+  //       blogTitleInput.value,
+  //       descriptionInput.value
+  //     );
+
+  //     // Close the modal after successful validation and storage
+  //     closeModal();
+  //   };
+
+  //   // Read the image file asDataURL
+  //   reader.readAsDataURL(imageInput.files[0]);
+  // }
+
+  function addBlogData() {
+    const token = localStorage.getItem('token')
+    const formData = new FormData();
+    formData.append('blogImage', imageInput.files[0]);
+    formData.append('blogDate', dateInput.value);
+    formData.append('blogTitle', blogTitleInput.value);
+    formData.append('blogDescription', descriptionInput.value);
+  
+    fetch('https://mybrand-backend-bjy7.onrender.com/api-docs/post-blog', {
+      headers:{"Authorization": `Bearer ${token}`},
+      method: 'POST',
+      body: formData
+    })
+    .then(response => {
+      if (response.ok) {
+        alert('Blog posted successfully')
+      } else {
+        console.error('Failed to store blog data.');
+      }
+    })
+    .catch(error => {
+      console.error('Error occurred while storing blog data:', error);
+    });
+  }
+  
 
   // Function to reset the form after adding or updating
   function resetForm() {

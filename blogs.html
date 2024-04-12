@@ -66,32 +66,44 @@
           
         </footer>
         <script>
-document.addEventListener("DOMContentLoaded", function () {
-  renderBlogs();
-  attachClickEventToButtons();
-});
- function renderBlogs() {
-  const blogs = JSON.parse(localStorage.getItem("blogs")) || [];
-  const blogSectionMain = document.querySelector(".blogSectionmain");
+          document.addEventListener("DOMContentLoaded", function () {
+          async function fetchBlogs() {
+    try {
+      const response = await fetch("http://localhost:5000/api/v1/getall-blog", {
+        method: "GET"
+      });
 
-  blogs.forEach((blog, index) => {
+      if (!response.ok) {
+        throw new Error("Failed to fetch blogs");
+      }
+      const data = await response.json();
+      console.log("Got blog data", data?.data);
+      renderBlogs(data);
+    } catch (error) {
+      console.error("Error fetching blogs:", error);
+    }}
+    fetchBlogs();
+});
+ function renderBlogs(blogs) {
+  const blogSectionMain = document.querySelector(".blogSectionmain");
+  blogs?.data?.reverse().forEach(blog => {
     const blogDiv = document.createElement("div");
     blogDiv.classList.add("blogSection");
-    blogDiv.dataset.blogId = index; // Set a data attribute to store the blog id
+   // blogDiv.dataset.blogId = index; // Set a data attribute to store the blog id
 
     blogDiv.innerHTML = `
       <div class="blogpartOne">
         <div class="h1">
-        <h1>Blog title:  <u> <span class="businessspanone">${blog.title}</span></u></h1>
+        <h1>Blog title:  <u> <span class="businessspanone">${blog.blogTitle}</span></u></h1>
      </div>
-        <img src="${blog.image}" alt="">
+        <img src="${blog.blogImage}" alt="">
       </div>
       <div class="blogpartTwo">
         <p class="waitUntill">
-          <p class="until">${blog.description}</p>
+          <p class="until">${blog.blogDescription}</p>
         </p>
         <p class="blogP">
-          <span class="businessspantwo">${blog.date}</span>
+          <span class="businessspantwo">${blog.blogDate}</span>
         </p>
        
       </div>
