@@ -167,9 +167,7 @@ function validateBlogForm() {
   // Function to fetch and populate the table with blog data
 
 function fetchAndPopulateTable() {
-  const token = localStorage.getItem('token')
   fetch('https://mybrand-backend-bjy7.onrender.com/api/v1/getall-blog',{
-    headers:{"Authorization": `Bearer ${token}`}
   }).then(response => {
     if (!response.ok) {
       throw new Error("Failed to fetch blogs");
