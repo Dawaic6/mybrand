@@ -195,7 +195,7 @@ function contactValidation() {
   
     // Call the function to store contact data
     storeContactUs(
-      fullName.value,
+      fullname.value,
       phoneNumber.value,
       emailAdress.value,
       subject.value,
@@ -204,7 +204,7 @@ function contactValidation() {
   }
   
   async function storeContactUs(
-    fullName,
+    fullname,
     phoneNumber,
     emailAdress,
     subject,
@@ -219,7 +219,7 @@ function contactValidation() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        fullName: fullName,
+        fullname: fullname,
         phoneNumber: phoneNumber,
         emailAddress: emailAdress,
         subject: subject,
