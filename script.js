@@ -23,51 +23,50 @@ themeToggler.addEventListener('click',()=>{
 
 // Fetch and populate the recent messages table on page load
 document.addEventListener("DOMContentLoaded", async function () {
-    async function fetchMessage() {
-        try {
-            const response = await fetch("https://mybrand-backend-bjy7.onrender.com/api/v1/getall-contact-message", {
-                method: "GET"
-            });
-
-            if (!response.ok) {
-                throw new Error("Failed to fetch messages");
-            }
-
-            const data = await response.json();
-            console.log("Got Messages", data?.data);
-            populateRecentMessages(data);
-            countMessages(data.data.length); // Call the countMessages function with the length of the messages array
-        } catch (error) {
-            console.error("Error fetching message:", error);
-        }
-    }
-
-    await fetchMessage();
-
-    function populateRecentMessages(messages) { // Changed the parameter name to avoid conflict with the function name
-        const tableBody = document.querySelector(".table tbody");
-        tableBody.innerHTML = "";
-        messages?.reverse().forEach((message, index) => {
-            const row = tableBody.insertRow();
-            row.innerHTML = `
-                <td>${index + 1}</td>
-                <td>${message?.fullName}</td>
-                <td>${message?.phoneNumber}</td>
-                <td>${message?.emailAddress}</td>
-                <td>${message?.subject}</td>
-                <td>${message?.message}</td>
-                <td><button class="btn_warning" onclick="markMessage(${index})">Mark</button></td>
-                <td><button class="btn_primary" onclick="deleteMessage(${index})">Delete</button></td>
-            `;
-        });
-    }
-
-    function countMessages(count) {
-        const countMessagesElement = document.getElementById('countMessages');
-        countMessagesElement.textContent = count;
-    }
+  async function fetchMessage() {
+try {
+const response = await fetch("https://mybrand-backend-bjy7.onrender.com/api/v1/getall-contact-message", {
+method: "GET"
 });
-  
+
+if (!response.ok) {
+throw new Error("Failed to fetch messages");
+}
+const data = await response.json();
+console.log("Got Messages", data?.data);
+populateRecentMessages(data);
+} catch (error) {
+console.error("Error fetching message:", error);
+}}
+ await fetchMessage();
+});
+
+/*.then(data => {
+  console.log(data.data)
+  const tableBody = document.querySelector(".tbl tbody");
+  tableBody.innerHTML = ""
+  data.data.forEach((blog, index) => {
+    const row = tableBody.insertRow();
+    row.innerHTML = `
+*/
+// Function to fetch and populate the recent messages table
+function populateRecentMessages(message) {
+    const tableBody = document.querySelector(".table tbody");
+    tableBody.innerHTML = "";
+    message?.data?.reverse().forEach((message,index) => {
+      const row = tableBody.insertRow();
+      row.innerHTML = `
+        <td>${index + 1}</td>
+        <td>${message.fullName}</td>
+        <td>${message.phoneNumber}</td>
+        <td>${message.emailAddress}</td>
+        <td>${message.subject}</td>
+        <td>${message.message}</td>
+        <td><button class="btn_warning" onclick="markMessage(${index})">Mark</button></td>
+        <td><button class="btn_primary" onclick="deleteMessage(${index})">Delete</button></td>
+      `;
+    });
+}
 // Function to delete a message
 function deleteMessage(index) {
     const token = localStorage.getItem('token');
