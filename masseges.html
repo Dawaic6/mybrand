@@ -29,9 +29,18 @@
               <span class="material-symbols-sharp">grid_view </span>
               <h3>Dashbord</h3>
            </a>
-           <a href="#">
+           <a href="./user1.html">
               <span class="material-symbols-sharp">person_outline </span>
               <h3>Users</h3>
+           </a>
+           <a href="./projectes.html">
+            <span class="material-symbols-sharp">receipt_long </span>
+            <h3>Projects</h3>
+         </a>
+           <a href="#">
+              <span class="material-symbols-sharp">mail_outline </span>
+              <h3>Messages</h3>
+              <span class="msg_count">3</span>
            </a>
            <a href="./dash-blogs.html">
               <span class="material-symbols-sharp">trending_up </span>
@@ -53,92 +62,76 @@
       --------------- -->
 
       <main>
-           <h1>Users</h1>
+           <h1>Dashbord</h1>
 
            <div class="date">
              <input type="date" >
            </div>
 
        
-      
        <!-- end insights -->
-       <div class="respo">
-      <div class="recent_messages">
-         <h2>Users Acounts</h2>
-         <table> 
+      <div class="recent_order">
+         <h2>Recent Messages</h2>
+         <div class="table">
+         <table > 
              <thead>
               <tr>
-                <th>No</th>
+                <th>user id</th>
                 <th>UserName</th>
-                <th>Password</th>
-                <th>Registered Date</th>
-                <th>User Role</th>
+                <th>Email</th>
+                <th>message</th>
                 <th colspan="2">Action</th>
               </tr>
              </thead>
-              <tbody>
+              <tbody >
+                <!--
                  <tr>
-                  <th>1</th>
+                  <td>1</td>
                    <td>Cedric</td>
-                   <td>14563</td>
-                   <td>02/12/2024</td>
-                   <td>user</td>
-                   <td class="warning" onclick="editRow(this)">Edit</td>
-                <td class="primary" onclick="deleteRow(this)">Delete</td>
-                           
+                   <td>iradukundasangwacedric@gmail.com</td>
+                   <td>first message</td>
+                   <td class="warning">mark</td>
+                   <td class="primary">Delete</td>
                  </tr>
                  <tr>
-                  <th>2</th>
+                  <td>2</td>
                   <td>Eric</td>
-                  <td>12345</td>
-                  <td>02/12/2024</td>
-                  <td>user</td>
-                  <td class="warning" onclick="editRow(this)">Edit</td>
-                  <td class="primary" onclick="deleteRow(this)">Delete</td>
-                             
+                  <td>second message</td>
+                  <td>iradukundasangwacedric@gmail.com</td>
+                 <td class="warning">mark</td>
+                  <td class="primary">Delete</td>
                 </tr>
                 <tr>
-                  <th>3</th>
+                  <td>3</td>
                   <td>Manzi</td>
-                  <td>54321</td>
-                  <td>02/23/2024</td>
-                  <td>user</td>
-                  <td class="warning" onclick="editRow(this)">Edit</td>
-                  <td class="primary" onclick="deleteRow(this)">Delete</td>
+                  <td>iradukundasangwacedric@gmail.com</td>
+                  <td>third message</td>
+                  <td class="warning">mark</td>
+                  <td class="primary">Delete</td>
                              
                 </tr>
                 <tr>
-                  <th>5</th>
+                  <td>4</td>
                   <td>Devin</td>
-                  <td>00000</td>
-                  <td>02/14/2024</td>
-                  <td>user</td>
-                  <td class="warning" onclick="editRow(this)">Edit</td>
-                  <td class="primary" onclick="deleteRow(this)">Delete</td>
-                             
+                  <td>iradukundasangwacedric@gmail.com</td>
+                  <td>fouth meassage</td>
+                  <td class="warning">mark</td>
+                  <td class="primary">Delete</td>
                 </tr>
-                <th>6</th>
-                <td>Devin</td>
-                  <td>00000</td>
-                  <td>02/14/2024</td>
-                  <td>user</td>
-                  <td class="warning" onclick="editRow(this)">Edit</td>
-                  <td class="primary" onclick="deleteRow(this)">Delete</td>
-                             
+                <tr>
+                  <td>5</td>
+                  <td>Devin</td>
+                  <td>iradukundasangwacedric@gmail.com</td>
+                  <td>firth message</td>
+                  <td class="warning">mark</td>
+                  <td class="primary">Delete</td>
                 </tr>
-                <th>7</th>
-                <td>Devin</td>
-                  <td>00000</td>
-                  <td>02/14/2024</td>
-                  <td>user</td>
-                  <td class="warning" onclick="editRow(this)">Edit</td>
-                <td class="primary" onclick="deleteRow(this)">Delete</td>
-                           
-                </tr>
+              -->
               </tbody>
          </table>
+         </div>
       </div>
-</div>
+
       </main>
       <!------------------
          end main
@@ -147,8 +140,8 @@
       <!----------------
         start right main 
       ---------------------->
-    
-      <div class="right">
+    <div class="right">
+
 <div class="top">
    <button id="menu_bar">
      <span class="material-symbols-sharp">menu</span>
@@ -170,41 +163,7 @@
     </div>
 </div>
 
- 
-<div class="recent_update">
-  <div class="recent_order" style=" margin-top: 4rem;" >
-    <h2> New User Acounts</h2>
-    <table > 
-        <thead>
-         <tr>
-           <th>No</th>
-           <th>UserName</th>
-           <th>User Role</th>
-         </tr>
-        </thead>
-         <tbody></tbody>
-            <tr>
-             <th>1</th>
-             <td>Eric</td>
-             <td>user</td>
-           </tr>
-           <tr>
-             <th>2</th>
-             <td>Manzi</td>
-             <td>user</td>
-           </tr>
-           <tr>
-             <th>3</th>
-             <td>Devin</td>
-             <td>user</td>
-            
-           
-         </tbody>
-    </table>
- </div>
-</div>
-      </div> 
    </div>
-   <script src="script.js"></script>
+   <script src="./script.js"></script>
 </body>
 </html>
