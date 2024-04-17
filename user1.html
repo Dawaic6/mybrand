@@ -63,79 +63,20 @@
       
        <!-- end insights -->
        <div class="respo">
-      <div class="recent_messages">
+      <div class="users">
          <h2>Users Acounts</h2>
-         <table> 
+         <table class="users"> 
              <thead>
               <tr>
                 <th>No</th>
-                <th>UserName</th>
-                <th>Password</th>
-                <th>Registered Date</th>
-                <th>User Role</th>
+                <th>firstName</th>
+                <th>lastName</th>
+                <th>Email</th>
                 <th colspan="2">Action</th>
               </tr>
              </thead>
               <tbody>
-                 <tr>
-                  <th>1</th>
-                   <td>Cedric</td>
-                   <td>14563</td>
-                   <td>02/12/2024</td>
-                   <td>user</td>
-                   <td class="warning" onclick="editRow(this)">Edit</td>
-                <td class="primary" onclick="deleteRow(this)">Delete</td>
-                           
-                 </tr>
-                 <tr>
-                  <th>2</th>
-                  <td>Eric</td>
-                  <td>12345</td>
-                  <td>02/12/2024</td>
-                  <td>user</td>
-                  <td class="warning" onclick="editRow(this)">Edit</td>
-                  <td class="primary" onclick="deleteRow(this)">Delete</td>
-                             
-                </tr>
-                <tr>
-                  <th>3</th>
-                  <td>Manzi</td>
-                  <td>54321</td>
-                  <td>02/23/2024</td>
-                  <td>user</td>
-                  <td class="warning" onclick="editRow(this)">Edit</td>
-                  <td class="primary" onclick="deleteRow(this)">Delete</td>
-                             
-                </tr>
-                <tr>
-                  <th>5</th>
-                  <td>Devin</td>
-                  <td>00000</td>
-                  <td>02/14/2024</td>
-                  <td>user</td>
-                  <td class="warning" onclick="editRow(this)">Edit</td>
-                  <td class="primary" onclick="deleteRow(this)">Delete</td>
-                             
-                </tr>
-                <th>6</th>
-                <td>Devin</td>
-                  <td>00000</td>
-                  <td>02/14/2024</td>
-                  <td>user</td>
-                  <td class="warning" onclick="editRow(this)">Edit</td>
-                  <td class="primary" onclick="deleteRow(this)">Delete</td>
-                             
-                </tr>
-                <th>7</th>
-                <td>Devin</td>
-                  <td>00000</td>
-                  <td>02/14/2024</td>
-                  <td>user</td>
-                  <td class="warning" onclick="editRow(this)">Edit</td>
-                <td class="primary" onclick="deleteRow(this)">Delete</td>
-                           
-                </tr>
-              </tbody>
+                 </tbody>
          </table>
       </div>
 </div>
@@ -172,39 +113,102 @@
 
  
 <div class="recent_update">
-  <div class="recent_order" style=" margin-top: 4rem;" >
+  <div class="users" style=" margin-top: 4rem;" >
+    <div class="user1">
     <h2> New User Acounts</h2>
     <table > 
         <thead>
          <tr>
            <th>No</th>
-           <th>UserName</th>
-           <th>User Role</th>
+           <th>email</th>
+           <th>role</th>
          </tr>
         </thead>
-         <tbody></tbody>
-            <tr>
-             <th>1</th>
-             <td>Eric</td>
-             <td>user</td>
-           </tr>
-           <tr>
-             <th>2</th>
-             <td>Manzi</td>
-             <td>user</td>
-           </tr>
-           <tr>
-             <th>3</th>
-             <td>Devin</td>
-             <td>user</td>
-            
+         <tbody>
            
          </tbody>
     </table>
  </div>
+  </div>
 </div>
       </div> 
    </div>
-   <script src="script.js"></script>
+   <script >
+    const  sideMenu = document.querySelector('aside');
+const menuBtn = document.querySelector('#menu_bar');
+const closeBtn = document.querySelector('#close_btn');
+
+
+const themeToggler = document.querySelector('.theme-toggler');
+
+
+
+menuBtn.addEventListener('click',()=>{
+       sideMenu.style.display = "block"
+})
+closeBtn.addEventListener('click',()=>{
+    sideMenu.style.display = "none"
+})
+
+themeToggler.addEventListener('click',()=>{
+     document.body.classList.toggle('dark-theme-variables')
+     themeToggler.querySelector('span:nth-child(1').classList.toggle('active')
+     themeToggler.querySelector('span:nth-child(2').classList.toggle('active')
+})
+
+const navMenu = document.getElementById('nav_menu'),
+    navToggle = document.getElementById('menu-toggle'),
+    navClose = document.getElementById('nav-close');
+
+    if(navToggle){
+        navToggle.addEventListener('click',()=>{
+            navMenu.classList.add('show-menu')
+        })
+    }
+
+    if (navClose) {
+        navClose.addEventListener('click',()=>{
+            navMenu.classList.remove('show-menu')
+        })
+    }
+    // Fetch and populate the recent messages table on page load
+document.addEventListener("DOMContentLoaded", async function () {
+  async function fetchUsers() {
+  try {
+    const response = await fetch('http://localhost:8000/api/v1/users', {
+      method: "GET"
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to fetch users");
+    }
+
+    const data = await response.json();
+    console.log("Got Users", data?.data);
+    populateUsers(data);
+  } catch (error) {
+    console.error("Error in fetching users:", error);
+  }
+}
+await fetchUsers();
+})
+// Function to fetch and populate the recent messages table
+function populateUsers(users) {
+    const tableBody = document.querySelector(".users tbody");
+    tableBody.innerHTML = "";
+    users?.data?.reverse().forEach((users,index) => {
+      const row = tableBody.insertRow();
+      row.innerHTML = `
+        <td>${index + 1}</td>
+        <td>${users.firstname}</td>
+        <td>${users.lastname}</td>
+        <td>${users.email}</td>
+        <td><button class="btn_warning" onclick="markMessage(${index})">Mark</button></td>
+        <td><button class="btn_primary" onclick="deleteMessage(${index})">Delete</button></td>
+      `;
+    });
+}
+
+   </script>
 </body>
 </html>
