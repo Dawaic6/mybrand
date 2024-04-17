@@ -39,7 +39,7 @@ const navMenu = document.getElementById('nav_menu'),
 document.addEventListener("DOMContentLoaded", async function () {
   async function fetchMessage() {
 try {
-const response = await fetch("http://localhost:8000/api/v1/getall-contact-message", {
+const response = await fetch("https://mybrand-backend-bjy7.onrender.com/api/v1/getall-contact-message", {
 method: "GET"
 });
 
@@ -127,7 +127,7 @@ function markMessage(index) {
   document.addEventListener("DOMContentLoaded", populateRecentMessages);
 
   function countBlogs(){
-     const blogs =  fetch('http://localhost:8000/api/v1/getall-blog',{
+     const blogs =  fetch('https://mybrand-backend-bjy7.onrender.com/api/v1/getall-blog',{
     }).then(response => {
       if (!response.ok) {
         throw new Error("Failed to fetch blogs");
@@ -142,7 +142,7 @@ function markMessage(index) {
   
   }
   function countUsers() {
-    fetch('http://localhost:8000/api/v1/users')
+    fetch('https://mybrand-backend-bjy7.onrender.com/api/v1/users')
       .then(response => {
         if (!response.ok) {
           throw new Error("Failed to fetch users");
@@ -169,7 +169,7 @@ function markMessage(index) {
   });
   
   function countMessages() {
-    fetch('http://localhost:8000/api/v1/getall-contact-message')
+    fetch('https://mybrand-backend-bjy7.onrender.com/api/v1/getall-contact-message')
       .then(response => {
         if (!response.ok) {
           throw new Error("Failed to fetch messages");

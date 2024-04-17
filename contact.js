@@ -9,7 +9,7 @@
   ) {
     try {
       const response = await fetch(
-        "http://localhost:8000/api/v1/post-contact-message",
+        "https://mybrand-backend-bjy7.onrender.com/api/v1/post-contact-message",
         {
           method: "POST",
           headers: {
