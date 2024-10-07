@@ -27,9 +27,9 @@
           <li><a href="./home.html">Home</a></li>
           <li><a href="./About.html">About</a></li>
           <li><a href="../#.html">Contact</a></li>
-          <li><a href="./portfolio.html">portfolio</a></li>
+          <!-- <li><a href="./portfolio.html">portfolio</a></li>
           <li><a href="./blogs.html">blogs</a></li>
-          <li><a href="./signin.html">sign in</a></li>
+          <li><a href="./signin.html">sign in</a></li> -->
         </ul>
         <div class="toggle_btn">
           <i class="fa fa-bars"></i>
@@ -38,9 +38,9 @@
           <li><a href="./home.html">Home</a></li>
           <li><a href="./#">About</a></li>
           <li><a href="./contactform.html">Contact</a></li>
-          <li><a href="./portfolio.html">portfolio</a></li>
+          <!-- <li><a href="./portfolio.html">portfolio</a></li>
           <li><a href="./blogs.html">blogs</a></li>
-          <li><a href="./signin.html">sign in</a></li>
+          <li><a href="./signin.html">sign in</a></li> -->
     
         </div>
    </header>
@@ -59,14 +59,15 @@
             </h4>
             <div class="contact-social-links">
               <a href="https://github.com/Dawaic6" ><i class="fa fa-github"></i></a>
-              <a href=""><i class="fa fa-linkedin"></i></a>
-              <a href=""><i class="fa fa-facebook"></i></a>
-              <a href=""><i class="fa fa-twitter"></i></a>
-              <a href=""><i class="fa fa-instagram"></i></a>
+              <a href="https://github.com/Dawaic6" ><i class="fa fa-github"></i></a>
+              <a href="https://www.linkedin.com/in/iradukunda-sangwa-cedric-501754258/"><i class="fa fa-linkedin"></i></a>
+              <a href="https://web.facebook.com/dawaic6/"><i class="fa fa-facebook"></i></a>
+              <a href="https://www.instagram.com/iradukundasangwa/"><i class="fa fa-instagram"></i></a>
             </div>
         </div>
         <div class="contact-form">
-          <form id="form" action="#" onsubmit="return validateForm()">
+          <form id="form" action="#" onsubmit="return validateForm()", onsubmit="return false;">
+
               <input id="fullname" type="text" name="fullname" placeholder="enter your name..">
               <div id="fullnameError" class="error"></div>
               <input id="phonenumber" type="text" name="phonenumber" placeholder="Tel:(+250 788224488)">
@@ -78,6 +79,7 @@
               <textarea id="message" name="message" cols="45" rows="5" placeholder="enter your message.."></textarea>
               <div id="messageError" class="error"></div>
               <button class="sendMessage" onclick="contactValidation()">Send Message</button>
+          
           </form>
       </div>
     </section>
@@ -105,227 +107,6 @@
           </div>
           
         </footer>
-      <script>
-   // Frontend JavaScript code
-let openHam = document.querySelector("#openHam");
-let closeHam = document.querySelector("#closeHam");
-let navigationItems = document.querySelector("#navigation-items");
-
-const hamburgerEvent = (navigation, close, open) => {
-  navigationItems.style.display = navigation;
-  closeHam.style.display = close;
-  openHam.style.display = open;
-};
-
-openHam.addEventListener("click", () =>
-  hamburgerEvent("flex", "block", "none")
-);
-closeHam.addEventListener("click", () =>
-  hamburgerEvent("none", "none", "block")
-);
-function openForm() {
-  document.getElementById("myForm").style.display = "block";
-}
-
-function closeForm() {
-  document.getElementById("myForm").style.display = "none";
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-
-});
-
-function contactValidation() {
-    const fullname = document.getElementById("fullname");
-    const emailAdress = document.getElementById("emailAdress");
-    const phoneNumber = document.getElementById("phoneNumber");
-    const subject = document.getElementById("subject");
-    const message = document.getElementById("message");
-  
-    const errors = [];
-    if (!fullname || fullname.value.trim() === "") {
-      errors.push("username is Required");
-    }
-    if (!emailAdress || emailAdress.value.trim() === "") {
-      errors.push("Email Address is Required");
-    }
-    if (!phoneNumber || phoneNumber.value.trim() === "") {
-      errors.push("Phone Number is Required");
-    }
-    if (!subject || subject.value.trim() === "") {
-      errors.push("Subject is Required");
-    }
-    if (!message || message.value.trim() === "") {
-      errors.push("Message is Required");
-    }
-  
-    document.getElementById("fullnameError").textContent = errors.includes(
-      "userme is Required"
-    )
-      ? "username is Required"
-      : "";
-  
-    document.getElementById("emailadressError").textContent = errors.includes(
-      "Email Address is Required"
-    )
-      ? "Email Address is Required"
-      : "";
-  
-    document.getElementById("phonenumberError").textContent = errors.includes(
-      "Phone Number is Required"
-    )
-      ? "Phone Number is Required"
-      : "";
-  
-    document.getElementById("subjectError").textContent = errors.includes(
-      "Subject is Required"
-    )
-      ? "Subject is Required"
-      : "";
-    document.getElementById("messageError").textContent = errors.includes(
-      "Message is Required"
-    )
-      ? "Message is Required"
-      : "";
-  
-    // Check if there are any validation errors and return if true
-    if (errors.length > 0) {
-      return false;
-    }
-  
-    // Call the function to store contact data
-    storeContactUs(
-      fullname.value,
-      phoneNumber.value,
-      emailAdress.value,
-      subject.value,
-      message.value
-    );
-  }
-  
-  async function storeContactUs(
-    fullname,
-    phoneNumber,
-    emailAdress,
-    subject,
-    message
-  ) {
-  
-  const response = await fetch(
-    "http://localhost:5000/api/v1/post-contact-message",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        fullname: fullname,
-        phoneNumber: phoneNumber,
-        emailAddress: emailAdress,
-        subject: subject,
-        message: message,
-      }),
-    }
-  );
-
-  const responseData = await response.json();
-
-  if (!response.ok) {
-    throw new Error(responseData.error || "Failed to save contact information");
-  }
-
-  alert("Contact information saved successfully!");
-  resetModalForm();
-}
-
-function resetModalForm() {
-  document.getElementById("fullName").value = "";
-  document.getElementById("emailAdress").value = "";
-  document.getElementById("phoneNumber").value = "";
-  document.getElementById("subject").value = "";
-  document.getElementById("message").value = "";
-}
-
-fullName.addEventListener("input", () => clearError("fullnameError"));
-phoneNumber.addEventListener("input", () => clearError("phonenumberError"));
-emailAdress.addEventListener("input", () => clearError("emailadressError"));
-subject.addEventListener("input", () => clearError("subjectError"));
-message.addEventListener("input", () => clearError("messageError"));
-
-function clearError(errorId) {
-  document.getElementById(errorId).textContent = "";
-}
-
-// Function to subscribe to newsletter
-function subscribeToNewsletter() {
-  const emailInput = document.getElementById("subscriptionEmail");
-  const subscriptionError = document.getElementById("subscriptionError");
-
-  const email = emailInput.value.trim();
-
-  // Validate email format
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email)) {
-    if (subscriptionError)
-      subscriptionError.textContent = "Invalid email format";
-    return false;
-  }
-
-  // Call the subscribe function with the email
-  subscribe(email);
-}
-
-// Function to handle subscription
-function subscribe(email) {
-  fetch("https://mybrand-backend-bjy7.onrender.com/api-docs/#/Subscribe/post-subscribe", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ email }),
-  })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Failed to subscribe");
-      }
-      return response.json();
-    })
-    .then((data) => {
-      if (data.success) {
-        // Clear input field and display success message
-        const emailInput = document.getElementById("subscriptionEmail");
-        if (emailInput) emailInput.value = "";
-        alert("Thank you for subscribing to the newsletter!");
-      } else {
-        // Check if subscription failed due to email already being subscribed
-        if (data.error === "Email already subscribed") {
-          // Display appropriate error message
-          alert("This email is already subscribed!");
-        } else {
-          // Display generic error message for other errors
-          alert(data.message || "This email is already subscribed!");
-        }
-      }
-    })
-    .catch((error) => {
-      console.error("Error:", error.message);
-      alert("This email is already subscribed!");
-    });
-}
-populateRecentMessages();
-
-          const toggleBtn = document.querySelector('.toggle_btn')
-          const toggleBtnIcon = document.querySelector('.toggle_btn i')
-          const dropDownMenu = document.querySelector('.dropdown_menu')
-      
-          toggleBtn.onclick = function () {
-            dropDownMenu.classList.toggle('open')
-            const isOpen = dropDownMenu.classList.contains('open')
-      
-            toggleBtnIcon.classList = isOpen
-              ? 'fa-solid fa-xmark'
-              : 'fa-solid fa-bars'
-          } 
-          </script>
+      <script src="./contact.js"></script>
 </body>
 </html>

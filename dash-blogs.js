@@ -34,10 +34,7 @@ const navMenu = document.getElementById('nav_menu'),
         navClose.addEventListener('click',()=>{
             navMenu.classList.remove('show-menu')
         })
-    }
-
-
-    
+    }  
 function validateBlogForm() {
     const imageInput = document.getElementById("blogimage");
     const dateInput = document.getElementById("blogdate");
@@ -197,41 +194,9 @@ function fetchAndPopulateTable() {
 
 }
 
-    // // Retrieve blog data from local storage
-    // const blogData = JSON.parse(localStorage.getItem("blogs")) || [];
-    // // Get the table body
-    // const tableBody = document.querySelector(".tbl tbody");
-  
-    // // Clear existing rows in the table
-    // tableBody.innerHTML = "";
-  
-    // // Iterate through blog data and append rows to the table
-    // blogData.forEach((blog, index) => {
-    //   const row = tableBody.insertRow();
-    //   row.innerHTML = `
-    //  <td data-table="Blog Id">${index + 1}</td>
-    //  <td data-table="Blog Title">${blog.title}</td>
-    //  <td data-table="Image"><img src="${blog.image}" alt="blog Image"></td>
-    //  <td data-table="Description">${blog.description}</td>
-    //  <td data-table="Date Created">${blog.date}</td>
-    //  <td>
-    //  <button class="btn_edit" data-table="Edit" onclick="editBlog(${index})">Edit</button>
-    //   <button class="btn_trash" data-table="Delete" onclick="deleteBlog(${index})">Delete</button>
-    //  </td>
-    // `;
-    // });
-  
-  
   // Add an event listener to fetch and populate the table on page load
   document.addEventListener("DOMContentLoaded", fetchAndPopulateTable);
   
-  // function deleteBlog(index) {
-  //   console.log(index);
-  //   let existingBlogs = JSON.parse(localStorage.getItem("blogs")) || [];
-  //   existingBlogs.splice(index, 1);
-  //   localStorage.setItem("blogs", JSON.stringify(existingBlogs));
-  //   // fetchAndPopulateTable();
-  // }
   function deleteBlog(index) {
     const token = localStorage.getItem('token');
     console.log('token');
@@ -262,29 +227,6 @@ function fetchAndPopulateTable() {
   }
   
 
-  // function editBlog(index) {
-  //   console.log(index)
-  //   // Retrieve existing blog data from local storage
-  //   let existingBlogs = JSON.parse(localStorage.getItem("blogs")) || [];
-
-  //   // Get the blog data based on the clicked row
-  //   const blogToEdit = existingBlogs[index];
-
-  //   // Populate the form with the data for editing
-  //   imageInput.value = ""; 
-  //   dateInput.value = blogToEdit.date;
-  //   blogTitleInput.value = blogToEdit.title;
-  //   descriptionInput.value = blogToEdit.description;
-
-  //   // Set the index of the blog being edited
-  //   document.getElementById("editedBlogIndex").value = index;
-
-  //   // Change the button text to "Update"
-  //   document.getElementById("submit").textContent = "Update";
-
-  //   // Open the modal for editing
-  //   openBlogModal();
-  // }
 
   // Function to update or add blog data in local storage
   function validateBlogForm() {
@@ -333,36 +275,7 @@ function fetchAndPopulateTable() {
     reader.readAsDataURL(imageInput.files[0]);
   }
 
-  // function deleteBlog(index) {
-  //   let existingBlogs = JSON.parse(localStorage.getItem("blogs")) || [];
-  //   existingBlogs.splice(index, 1);
-  //   localStorage.setItem("blogs", JSON.stringify(existingBlogs));
-  //   fetchAndPopulateTable();
-  // }
-  
-  // function editBlog(index) {
-  //   let existingBlogs = JSON.parse(localStorage.getItem("blogs")) || [];
-  //   const blogToEdit = existingBlogs[index];
-  
-  //   imageInput.value = ""; 
-  //   dateInput.value = blogToEdit.date;
-  //   blogTitleInput.value = blogToEdit.title;
-  //   descriptionInput.value = blogToEdit.description;
-  
-  //   document.getElementById("editedBlogIndex").value = index;
-  //   document.getElementById("submit").textContent = "Update";
-  //   openBlogModal();
-  // }
-  
-  // function validateBlogForm() {
-  //   const index = document.getElementById("editedBlogIndex").value;
-  
-  //   if (index !== "") {
-  //     updateBlogData(index);
-  //   } else {
-  //     addBlogData();
-  //   }
-  // }
+  // edit blog
   
   function editBlog(index) {
     const token = localStorage.getItem('token');
@@ -390,31 +303,7 @@ function fetchAndPopulateTable() {
     });
   }
   
-
-  // Function to add new blog data in local storage
-  // function addBlogData() {
-  //   // Read the image file using FileReader
-  //   const reader = new FileReader();
-
-  //   reader.onload = function (e) {
-  //     // e.target.result contains the base64-encoded image data
-  //     const imageData = e.target.result;
-
-  //     // If all fields are valid, proceed to store data in local storage
-  //     storeBlogData(
-  //       imageData,
-  //       dateInput.value,
-  //       blogTitleInput.value,
-  //       descriptionInput.value
-  //     );
-
-  //     // Close the modal after successful validation and storage
-  //     closeModal();
-  //   };
-
-  //   // Read the image file asDataURL
-  //   reader.readAsDataURL(imageInput.files[0]);
-  // }
+//add blog
 
   function addBlogData() {
     const token = localStorage.getItem('token')

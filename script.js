@@ -20,7 +20,21 @@ themeToggler.addEventListener('click',()=>{
      themeToggler.querySelector('span:nth-child(2').classList.toggle('active')
 })
 
+const navMenu = document.getElementById('nav_menu'),
+    navToggle = document.getElementById('menu-toggle'),
+    navClose = document.getElementById('nav-close');
 
+    if(navToggle){
+        navToggle.addEventListener('click',()=>{
+            navMenu.classList.add('show-menu')
+        })
+    }
+
+    if (navClose) {
+        navClose.addEventListener('click',()=>{
+            navMenu.classList.remove('show-menu')
+        })
+    }
 // Fetch and populate the recent messages table on page load
 document.addEventListener("DOMContentLoaded", async function () {
   async function fetchMessage() {
@@ -41,14 +55,6 @@ console.error("Error fetching message:", error);
  await fetchMessage();
 });
 
-/*.then(data => {
-  console.log(data.data)
-  const tableBody = document.querySelector(".tbl tbody");
-  tableBody.innerHTML = ""
-  data.data.forEach((blog, index) => {
-    const row = tableBody.insertRow();
-    row.innerHTML = `
-*/
 // Function to fetch and populate the recent messages table
 function populateRecentMessages(message) {
     const tableBody = document.querySelector(".table tbody");
@@ -69,103 +75,125 @@ function populateRecentMessages(message) {
 }
 // Function to delete a message
 function deleteMessage(index) {
-    const token = localStorage.getItem('token');
-    console.log('token');
-    const url = `https://mybrand-backend-bjy7.onrender.com/api/v1/getone-contact-message/${index}`;
-  
-    fetch(url, {
-      headers: {
-        "Authorization": `Bearer ${token}`
-      },
-      method: 'DELETE'
-    })
-    .then(response => {
-      if (response.ok) {
-        alert('message deleted successfully');
-      } else {
-        console.error('Failed to delete message.');
-      }
-    })
-    .catch(error => {
-      console.error('Error occurred while deleting message:', error);
-    });
-  }
-  function removeAllFromLocalStorage() {
-    localStorage.clear();
-  }
+  const token = localStorage.getItem('token');
+  console.log('token');
+  const url = `https://mybrand-backend-bjy7.onrender.com/api/v1/getone-contact-message/${index}`;
+
+  fetch(url, {
+    headers: {
+      "Authorization": `Bearer ${token}`
+    },
+    method: 'DELETE'
+  })
+  .then(response => {
+    if (response.ok) {
+      alert('message deleted successfully');
+    } else {
+      console.error('Failed to delete message.');
+    }
+  })
+  .catch(error => {
+    console.error('Error occurred while deleting message:', error);
+  });
+}
+function removeAllFromLocalStorage() {
+  localStorage.clear();
+}
 // Function to mark a message as seen
 function markMessage(index) {
-    
-    const token = localStorage.getItem('token');
   
-    fetch(`https://mybrand-backend-bjy7.onrender.com/api/v1/update-blog/${index}`, {
-      headers: { "Authorization": `Bearer ${token}` },
-      method: 'PUT',
-      body: formData
-    })
-    .then(response => {
-      if (response.ok) {
-        alert(`Message ${index + 1} marked as seen`);
-      } else {
-        console.error('Failed to to read message.');
+  const token = localStorage.getItem('token');
+
+  fetch(`https://mybrand-backend-bjy7.onrender.com/api/v1/update-blog/${index}`, {
+    headers: { "Authorization": `Bearer ${token}` },
+    method: 'PUT',
+    body: formData
+  })
+  .then(response => {
+    if (response.ok) {
+      alert(`Message ${index + 1} marked as seen`);
+    } else {
+      console.error('Failed to to read message.');
+    }
+  })
+  .catch(error => {
+    console.error('Error occurred :', error);
+  });
+}
+
+
+  
+  
+  document.addEventListener("DOMContentLoaded", populateRecentMessages);
+
+  function countBlogs(){
+     const blogs =  fetch('https://mybrand-backend-bjy7.onrender.com/api/v1/getall-blog',{
+    }).then(response => {
+      if (!response.ok) {
+        throw new Error("Failed to fetch blogs");
       }
+      return response.json();
     })
-    .catch(error => {
-      console.error('Error occurred :', error);
-    });
-  }
+    .then(data =>{
+      const countBlogsElement = document.getElementById('countBlogs');
+      countBlogsElement.textContent = `${data.data.length}`
+        return data.data.length
+    })
   
-
-    
-    
-    document.addEventListener("DOMContentLoaded", populateRecentMessages);
-
-    function countBlogs(){
-       const blogs =  fetch('https://mybrand-backend-bjy7.onrender.com/api/v1/getall-blog',{
-      }).then(response => {
+  }
+  function countUsers() {
+    fetch('https://mybrand-backend-bjy7.onrender.com/api/v1/users')
+      .then(response => {
         if (!response.ok) {
-          throw new Error("Failed to fetch blogs");
+          throw new Error("Failed to fetch users");
         }
         return response.json();
       })
-      .then(data =>{
-        const countBlogsElement = document.getElementById('countBlogs');
-        countBlogsElement.textContent = `${data.data.length}`
-          return data.data.length
+      .then(data => {
+        const countUsersElement = document.getElementById('countUsers');
+        if (countUsersElement) {
+          countUsersElement.textContent = `${data.data.length}`;
+        } else {
+          console.error("Element with ID 'countUsers' not found");
+        }
+        return data.data.length;
       })
-    
-    }
-    function countUsers(){
-      const token= localStorage.getItem('token')
-     const Users =  fetch('https://mybrand-backend-bjy7.onrender.com/api/v1/get-all-users',{
-      headers:{"Authorization": `Bearer ${token}`}
-    }).then(response => {
-      if (!response.ok) {
-        throw new Error("Failed to fetch users");
-      }
-      return response.json();
-    })
-    .then(data =>{
-      const countUsersElement = document.getElementById('countUsers');
-      countUsersElement.textContent = `${data.data.length}`
-        return data.data.length
-    })
-    
-    }
-    function countMessages(){
-     const messages =  fetch('https://mybrand-backend-bjy7.onrender.com/api/v1/getall-contact-message',{
-    }).then(response => {
-      if (!response.ok) {
-        throw new Error("Failed to fetch messages");
-      }
-      return response.json();
-    })
-    .then(data =>{
-      const countMessagesElement = document.getElementById('countMessages');
-      countMessagesElement.textContent = `${message.data.length}`
-        return data.data.length
-    })
-    
-    }
-    
-    window.onload = countBlogs , countUsers, countMessages;
+      .catch(error => {
+        console.error("Error in counting users:", error);
+      });
+  }
+  
+  // Call countUsers function when the DOM content is loaded
+  document.addEventListener("DOMContentLoaded", () => {
+    countUsers();
+  });
+  
+  function countMessages() {
+    fetch('https://mybrand-backend-bjy7.onrender.com/api/v1/getall-contact-message')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch messages");
+        }
+        return response.json();
+      })
+      .then(data => {
+        const countMessagesElement = document.getElementById('countMessages');
+        if (countMessagesElement) {
+          countMessagesElement.textContent = `${data.data.length}`;
+        } else {
+          console.error("Element with ID 'countMessages' not found");
+        }
+        return data.data.length;
+      })
+      .catch(error => {
+        console.error("Error in counting messages:", error);
+      });
+  }
+  
+  // Call countMessages function when the DOM content is loaded
+  document.addEventListener("DOMContentLoaded", () => {
+    countMessages();
+  });
+  
+  
+  window.onload = countBlogs , countUsers, countMessages;
